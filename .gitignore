@@ -32,6 +32,9 @@ bin-release/
 *.out
 *.app
 
+#CAD错误文件
+*.err
+
 
 #屏蔽VS目录文件
 .vs
@@ -52,3 +55,10 @@ outPutPath/
 /AUTOCADCode/MyCD/Chap01/outPutPath/*.pdb
 outPutPath
 *.pdb
+outPutPath
+outPutPath
+outPutPath
+outPutPath
+outPutPath
+outPutPath
+outPutPath

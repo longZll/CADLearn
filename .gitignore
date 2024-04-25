@@ -25,6 +25,7 @@ bin-release/
 *.so
 *.dylib
 *.dll
+*.pdb
 
 # Executables  可执行文件
 *.exe
@@ -43,3 +44,4 @@ x64
 /AUTOCADCode/MyCD/DotNetARX/outPutPath/*.pdb
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs/DotNetARX/v16/*.suo
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs
+/AUTOCADCode/MyCD/Chap01/outPutPath/*.pdb

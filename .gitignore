@@ -39,9 +39,16 @@ Debug
 Release
 x64
 
+
+#忽略所有名为 outPutPath 的文件夹及其内部的同名文件夹
+outPutPath/
+
+
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs
 /AUTOCADCode/MyCD/DotNetARX/outPutPath/*.pdb
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs/DotNetARX/v16/*.suo
 /AUTOCADCode/MyCD/DotNetARX/2010/.vs
 /AUTOCADCode/MyCD/Chap01/outPutPath/*.pdb
+outPutPath
+*.pdb

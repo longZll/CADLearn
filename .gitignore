@@ -26,6 +26,7 @@ bin-release/
 *.dylib
 *.dll
 *.pdb
+*.cache
 
 # Executables  可执行文件
 *.exe

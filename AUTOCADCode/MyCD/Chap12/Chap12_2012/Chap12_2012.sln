@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawSolid3d", "DrawSolid3d\DrawSolid3d.csproj", "{9B2D98EE-3B42-4E66-AF6A-F4F41D4D836A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubSolid3d", "SubSolid3d\SubSolid3d.csproj", "{7C1EE945-8D4C-47D8-AC8F-5399E58750C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrepTest", "BrepTest\BrepTest.csproj", "{B98FBC35-00DC-4AB3-B65B-9FAD4769CC6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B2D98EE-3B42-4E66-AF6A-F4F41D4D836A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2D98EE-3B42-4E66-AF6A-F4F41D4D836A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2D98EE-3B42-4E66-AF6A-F4F41D4D836A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2D98EE-3B42-4E66-AF6A-F4F41D4D836A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1EE945-8D4C-47D8-AC8F-5399E58750C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1EE945-8D4C-47D8-AC8F-5399E58750C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1EE945-8D4C-47D8-AC8F-5399E58750C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1EE945-8D4C-47D8-AC8F-5399E58750C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98FBC35-00DC-4AB3-B65B-9FAD4769CC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98FBC35-00DC-4AB3-B65B-9FAD4769CC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98FBC35-00DC-4AB3-B65B-9FAD4769CC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98FBC35-00DC-4AB3-B65B-9FAD4769CC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

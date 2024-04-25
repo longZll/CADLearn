@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetSelection", "NetSelection\NetSelection.csproj", "{33838790-8F4A-4FD9-B3ED-AF20E0EBC3EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactive", "Interactive\Interactive.csproj", "{471C9CAF-0BBE-4860-8B82-38A21249F388}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighestPoints", "HighestPoints\HighestPoints.csproj", "{99B450F0-4134-4403-8080-11466CBA0842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSnap", "CustomSnap\CustomSnap.csproj", "{410D5BE3-E9A5-4B05-8A5C-400068CA2C53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseTip", "MouseTip\MouseTip.csproj", "{9B96014F-E76A-43E0-87E8-FC33D6A2DF5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{B2CCEF27-D09B-46BC-A6DD-DF4F1A771FAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33838790-8F4A-4FD9-B3ED-AF20E0EBC3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33838790-8F4A-4FD9-B3ED-AF20E0EBC3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33838790-8F4A-4FD9-B3ED-AF20E0EBC3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33838790-8F4A-4FD9-B3ED-AF20E0EBC3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471C9CAF-0BBE-4860-8B82-38A21249F388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471C9CAF-0BBE-4860-8B82-38A21249F388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471C9CAF-0BBE-4860-8B82-38A21249F388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471C9CAF-0BBE-4860-8B82-38A21249F388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B450F0-4134-4403-8080-11466CBA0842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B450F0-4134-4403-8080-11466CBA0842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B450F0-4134-4403-8080-11466CBA0842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B450F0-4134-4403-8080-11466CBA0842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410D5BE3-E9A5-4B05-8A5C-400068CA2C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410D5BE3-E9A5-4B05-8A5C-400068CA2C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410D5BE3-E9A5-4B05-8A5C-400068CA2C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410D5BE3-E9A5-4B05-8A5C-400068CA2C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B96014F-E76A-43E0-87E8-FC33D6A2DF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B96014F-E76A-43E0-87E8-FC33D6A2DF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B96014F-E76A-43E0-87E8-FC33D6A2DF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B96014F-E76A-43E0-87E8-FC33D6A2DF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CCEF27-D09B-46BC-A6DD-DF4F1A771FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2CCEF27-D09B-46BC-A6DD-DF4F1A771FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2CCEF27-D09B-46BC-A6DD-DF4F1A771FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2CCEF27-D09B-46BC-A6DD-DF4F1A771FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_sample" Class="officeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SqlExpress;Initial Catalog=db_sample;Integrated Security=True" SettingsObjectName="SQLCAD.Properties.Settings" SettingsPropertyName="db_sampleConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employee" Member="Employee">
+    <Type Name="Employee">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Last_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="First_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Room_No" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Room_Employee" Member="Room" ThisKey="Room_No" OtherKey="Room_No" Type="Room" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Room" Member="Room">
+    <Type Name="Room">
+      <Column Name="Room_No" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Room_Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Entity_Handle" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Room_Employee" Member="Employee" ThisKey="Room_No" OtherKey="Room_No" Type="Employee" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="office">
+  <DataContextMoniker Name="/officeDataContext" />
+  <nestedChildShapes>
+    <classShape Id="12d6ccd0-019f-40c1-9ae0-77e06d807ce3" absoluteBounds="3.375, 1, 2, 1.4483463541666668">
+      <DataClassMoniker Name="/officeDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09051baa-49fd-49eb-96f4-240e3fdd3816" absoluteBounds="3.39, 1.46, 1.9700000000000002, 0.88834635416666674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94bc51fd-5373-49dc-be98-09cae96e88ec" absoluteBounds="0.5, 1, 2, 1.2797265625">
+      <DataClassMoniker Name="/officeDataContext/Room" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6c03d613-384b-4508-b9f3-bc5a1c3a7565" absoluteBounds="0.51499999999999968, 1.46, 1.9700000000000002, 0.7197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.63986328125); (3.375 : 1.63986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/officeDataContext/Room/Room_Employee" />
+      <nodes>
+        <classShapeMoniker Id="94bc51fd-5373-49dc-be98-09cae96e88ec" />
+        <classShapeMoniker Id="12d6ccd0-019f-40c1-9ae0-77e06d807ce3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

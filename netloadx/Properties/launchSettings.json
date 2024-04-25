@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "串线": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Autodesk\\AutoCAD 2020\\acad.exe"
+    }
+  }
+}

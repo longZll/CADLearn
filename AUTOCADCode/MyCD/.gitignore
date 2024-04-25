@@ -1,0 +1,48 @@
+# Build and Release Folders 构建和发布文件夹
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
+# Other files and folders 其他文件和文件夹
+.settings/
+
+# Executables  可执行文件
+*.swf
+*.air
+*.ipa
+*.apk
+*.pdf
+*.suo
+
+# Compiled Object files 编译的目标文件
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries  编译的动态库
+*.so
+*.dylib
+*.dll
+*.pdb
+
+# Executables  可执行文件
+*.exe
+*.out
+*.app
+
+
+#屏蔽VS目录文件
+.vs
+Debug
+Release
+x64
+
+/AUTOCADCode/MyCD/DotNetARX/2010/.vs
+/AUTOCADCode/MyCD/DotNetARX/2010/.vs
+/AUTOCADCode/MyCD/DotNetARX/outPutPath/*.pdb
+/AUTOCADCode/MyCD/DotNetARX/2010/.vs/DotNetARX/v16/*.suo
+/AUTOCADCode/MyCD/DotNetARX/2010/.vs
+/AUTOCADCode/MyCD/Chap01/outPutPath/*.pdb
+outPutPath

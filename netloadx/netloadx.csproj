@@ -1,0 +1,323 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<!--永远支持最新语法 preview,默认是latestMajor-->
+		<LangVersion>preview</LangVersion>
+		<!--版本号迭代-->
+		<AssemblyVersion>1.0.0.*</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Deterministic>False</Deterministic>
+
+		<TargetFrameworks>NET472</TargetFrameworks>
+		<!-- 支持wpf -->
+		<UseWpf>true</UseWpf>
+		<!-- 支持winform -->
+		<UseWindowsForms>true</UseWindowsForms>
+		<!-- 以下是默认引用相关依赖的属性 WPF -->
+		<ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
+		<!-- 以下是默认引用相关依赖的属性 WindowsForms -->
+		<ExtrasEnableWinFormsProjectSetup>true</ExtrasEnableWinFormsProjectSetup>
+		<!--输出路径-->
+		<OutputPath></OutputPath>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+
+	<!--DEBUG设置-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net35|AnyCPU'">
+		<DefineConstants>DEBUG;AC2008</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|AC2010|AnyCPU'">
+		<DefineConstants>DEBUG;AC2010</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
+		<DefineConstants>DEBUG;AC2013</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+		<DefineConstants>DEBUG;AC2015</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
+		<DefineConstants>DEBUG;AC2017</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
+		<DefineConstants>DEBUG;AC2019</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+		<DefineConstants>DEBUG;AC2021</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<!--Release设置-->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|NET35|AnyCPU'">
+		<DefineConstants>TRACE;AC2008</DefineConstants>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|AC2010|AnyCPU'">
+		<DefineConstants>TRACE;AC2010</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
+		<DefineConstants>TRACE;AC2013</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+		<DefineConstants>TRACE;AC2015</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+		<DefineConstants>TRACE;AC2017</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
+		<DefineConstants>TRACE;AC2019</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
+		<DefineConstants>TRACE;AC2021</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|NET472|AnyCPU'">
+	  <PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
+	<!--MSBuild条件 版本号运算 https://docs.microsoft.com/zh-cn/visualstudio/msbuild/msbuild-conditions?view=vs-2019 -->
+	<!--WPF需要的dll,System.Xaml在net35没有-->
+	<ItemGroup Condition="'$(TargetFramework)' != 'net35'">
+		<Reference Include="System.Xaml" /> 
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net35'">
+		<!--ExcludeAssets 因为Acad2008不可以复制dll到目标,否则会无法使用命令-->
+		<Reference Include="AcDx">
+			<HintPath>..\DLL\net35-2008\AcDx.dll</HintPath>
+		</Reference>
+		<Reference Include="AcRibbon">
+			<HintPath>..\DLL\net35-2008\AcRibbon.dll</HintPath>
+		</Reference>
+		<Reference Include="AdWindows">
+			<HintPath>..\DLL\net35-2008\AdWindows.dll</HintPath>
+		</Reference>
+		<Reference Include="AxInterop.ACCTRLLib">
+			<HintPath>..\DLL\net35-2008\AxInterop.ACCTRLLib.dll</HintPath>
+		</Reference>
+		<Reference Include="Interop.ACCTRLLib">
+			<HintPath>..\DLL\net35-2008\Interop.ACCTRLLib.dll</HintPath>
+		</Reference> 
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+		<Reference Include="accoremgd">
+			<HintPath>..\DLL\net40-2013\AcCoreMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcCui">
+			<HintPath>..\DLL\net40-2013\AcCui.dll</HintPath>
+		</Reference>
+		<Reference Include="AcDbMgd">
+			<HintPath>..\DLL\net40-2013\AcDbMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgdbrep">
+			<HintPath>..\DLL\net40-2013\acdbmgdbrep.dll</HintPath>
+		</Reference>
+		<Reference Include="AcDx">
+			<HintPath>..\DLL\net40-2013\AcDx.dll</HintPath>
+		</Reference>
+		<Reference Include="AcMgd">
+			<HintPath>..\DLL\net40-2013\AcMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcMr">
+			<HintPath>..\DLL\net40-2013\AcMr.dll</HintPath>
+		</Reference>
+		<Reference Include="AcTcMgd">
+			<HintPath>..\DLL\net40-2013\AcTcMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcWindows">
+			<HintPath>..\DLL\net40-2013\AcWindows.dll</HintPath>
+		</Reference>
+		<Reference Include="AdWindows">
+			<HintPath>..\DLL\net40-2013\AdWindows.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop.Common">
+			<HintPath>..\DLL\net40-2013\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop">
+			<HintPath>..\DLL\net40-2013\Autodesk.AutoCAD.Interop.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+		<Reference Include="AcCoreMgd">
+			<HintPath>..\DLL\net45-2015\AcCoreMgd.dll</HintPath>
+		</Reference>	
+		<Reference Include="AcCui">
+			<HintPath>..\DLL\net45-2015\AcCui.dll</HintPath>
+		</Reference>
+		<Reference Include="AcDbMgd">
+			<HintPath>..\DLL\net45-2015\AcDbMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgdbrep">
+			<HintPath>..\DLL\net45-2015\acdbmgdbrep.dll</HintPath>
+		</Reference>
+		<Reference Include="AcDx">
+			<HintPath>..\DLL\net45-2015\AcDx.dll</HintPath>
+		</Reference>
+		<Reference Include="AcMgd">
+			<HintPath>..\DLL\net45-2015\AcMgd.dll</HintPath>
+		</Reference>		
+		<Reference Include="AcTcMgd">
+			<HintPath>..\DLL\net45-2015\AcTcMgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcWindows">
+			<HintPath>..\DLL\net45-2015\AcWindows.dll</HintPath>
+		</Reference>
+		<Reference Include="AdWindows">
+			<HintPath>..\DLL\net45-2015\AdWindows.dll</HintPath>
+		</Reference> 
+		<Reference Include="Autodesk.AutoCAD.Interop.Common">
+			<HintPath>..\DLL\net45-2015\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop">
+			<HintPath>..\DLL\net45-2015\Autodesk.AutoCAD.Interop.dll</HintPath>
+		</Reference>
+		
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+		<Reference Include="accoremgd">
+			<HintPath>..\DLL\net46-2017\accoremgd.dll</HintPath>
+		</Reference>		 
+		<Reference Include="AcCui">
+			<HintPath>..\DLL\net46-2017\AcCui.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgd">
+			<HintPath>..\DLL\net46-2017\acdbmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgdbrep">
+			<HintPath>..\DLL\net46-2017\acdbmgdbrep.dll</HintPath>
+		</Reference>
+		<Reference Include="acmgd">
+			<HintPath>..\DLL\net46-2017\acmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop.Common">
+			<HintPath>..\DLL\net46-2017\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop">
+			<HintPath>..\DLL\net46-2017\Autodesk.AutoCAD.Interop.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+		<Reference Include="accoremgd">
+			<HintPath>..\DLL\net47-2019\accoremgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcCui">
+			<HintPath>..\DLL\net47-2019\AcCui.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgd">
+			<HintPath>..\DLL\net47-2019\acdbmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgdbrep">
+			<HintPath>..\DLL\net47-2019\acdbmgdbrep.dll</HintPath>
+		</Reference>
+		<Reference Include="acmgd">
+			<HintPath>..\DLL\net47-2019\acmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop.Common">
+			<HintPath>..\DLL\net47-2019\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop">
+			<HintPath>..\DLL\net47-2019\Autodesk.AutoCAD.Interop.dll</HintPath>
+		</Reference>
+ 
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<Reference Include="accoremgd">
+			<HintPath>..\DLL\net48-2021\accoremgd.dll</HintPath>
+		</Reference>
+		<Reference Include="AcCui">
+			<HintPath>..\DLL\net48-2021\AcCui.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgd">
+			<HintPath>..\DLL\net48-2021\acdbmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="acdbmgdbrep">
+			<HintPath>..\DLL\net48-2021\acdbmgdbrep.dll</HintPath>
+		</Reference>
+		<Reference Include="acmgd">
+			<HintPath>..\DLL\net48-2021\acmgd.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop.Common">
+			<HintPath>..\DLL\net48-2021\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Autodesk.AutoCAD.Interop">
+			<HintPath>..\DLL\net48-2021\Autodesk.AutoCAD.Interop.dll</HintPath>
+		</Reference>
+		<Reference Include="Interop.AXDBLib">
+			<HintPath>..\DLL\net48-2021\Interop.AXDBLib.dll</HintPath>
+		</Reference>
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--WPF的包 WPF的程序集引用--> 
+		<Reference Include="accoremgd">
+		  <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\accoremgd.dll</HintPath>
+		</Reference> 
+		<Reference Include="AcCui">
+		  <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\AcCui.dll</HintPath>
+		</Reference> 
+		<Reference Include="Acdbmgd">
+		  <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\acdbmgd.dll</HintPath>
+		</Reference> 
+		<Reference Include="acdbmgdbrep">
+		  <HintPath>bin\Debug\net48\acdbmgdbrep.dll</HintPath>
+		</Reference> 
+		<Reference Include="Acmgd">
+		  <HintPath>C:\Program Files\Autodesk\AutoCAD 2020\acmgd.dll</HintPath>
+		</Reference> 
+		<Reference Include="Interop.AXDBLib">
+		  <HintPath>bin\Debug\net48\Interop.AXDBLib.dll</HintPath>
+		</Reference> 
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="WindowsBase" />
+		<Reference Include="WindowsFormsIntegration" />
+	</ItemGroup>
+
+	<ItemGroup> 
+		<Reference Include="System.Management" />
+		<Reference Include="System.Runtime.Remoting" />
+		<Reference Include="System.ServiceModel" />
+		<Reference Include="System.Windows.Forms" />
+		<Reference Include="System.Xml" />
+		<Reference Include="PresentationFramework" /> 
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--排除引用的包文件目录-->
+		<Compile Remove="FakesAssemblies\**" />
+		<EmbeddedResource Remove="FakesAssemblies\**" />
+		<None Remove="FakesAssemblies\**" />
+		<Page Remove="FakesAssemblies\**" />
+	</ItemGroup>
+
+</Project>

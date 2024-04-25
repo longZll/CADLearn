@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+	
+	<PropertyGroup>
+		<AssemblyVersion>1.0.0.*</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Deterministic>False</Deterministic>
+		<LangVersion>preview</LangVersion>
+		<AssemblyName>loada</AssemblyName>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+	
+	<ItemGroup>
+	  <Reference Include="accoremgd">
+	    <HintPath>..\..\cadDevelopment\Exlib\CAD2016\accoremgd.dll</HintPath>
+	    <Private>false</Private>
+	  </Reference>
+	  <Reference Include="Acdbmgd">
+	    <HintPath>..\..\cadDevelopment\Exlib\CAD2016\acdbmgd.dll</HintPath>
+	    <Private>false</Private>
+	  </Reference>
+	  <Reference Include="Acmgd">
+	    <HintPath>..\..\cadDevelopment\Exlib\CAD2016\acmgd.dll</HintPath>
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Core">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Data">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Drawing">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.IO.Compression.FileSystem">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Numerics">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Runtime.Serialization">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Xml">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Reference Update="System.Xml.Linq">
+	    <Private>false</Private>
+	  </Reference>
+	</ItemGroup>
+
+</Project>

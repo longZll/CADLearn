@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:adw="clr-namespace:Autodesk.Windows;assembly=AdWindows"
+>
+<BitmapImage x:Key="CopyImage" UriSource="Images/Copy.ico" /><!---->
+<BitmapImage x:Key="LineImage" UriSource="Images/Line.ico"/>
+<BitmapImage x:Key="MoveImage" UriSource="Images/Move.ico"/>
+<BitmapImage x:Key="MTextImage" UriSource="Images/MText.ico"/>
+<BitmapImage x:Key="StretchImage" UriSource="Images/Stretch.ico"/>
+<BitmapImage x:Key="TextImage" UriSource="Images/Text.ico"/>
+<BitmapImage x:Key="TooltipLineImage" UriSource="Images/tooltip_line.gif"/>
+<adw:RibbonTab x:Key="TabXaml" Id="TabXaml_1"  Title="XAML">
+    <adw:RibbonPanel>
+        <adw:RibbonPanelSource Title="演示">
+            <adw:RibbonButton Id="ID_MyLine" Name="直线" Text = "直线"
+                                    ShowImage="True" ShowText="True" 
+                                    Orientation="Vertical" Size="Large"
+                                    LargeImage="{StaticResource LineImage}"
+                                    Image="{StaticResource LineImage}"
+                                CommandParameter="Line ">
+                <adw:RibbonButton.ToolTip>
+                    <adw:RibbonToolTip  
+                    Command="Line" Title="直线"
+                    Content="创建直线段" ExpandedContent = "使用Line命令，可以创建一系列连续的直线段。每条线段都是可以单独进行编辑的直线对象。"
+                    ExpandedImage="{StaticResource TooltipLineImage}"/>
+                </adw:RibbonButton.ToolTip>
+            </adw:RibbonButton>
+            <adw:RibbonSplitButton Text="文字" IsSplit="True"
+                                        ShowImage="True" ShowText="True"
+                                        Orientation="Vertical" Size="Large"
+                                        >
+                <adw:RibbonButton Id="ID_MyText" Name="单行文字" Text = "文字"
+                                    ShowImage="True" ShowText="False" 
+                                    Size="Large"
+                                    LargeImage="{StaticResource TextImage}"
+                                    Image="{StaticResource TextImage}"                                      
+                                    CommandParameter="Text "/>
+                <adw:RibbonButton Id="ID_MyMText" Name="多行文字" Text = "文字"
+                                    ShowImage="True" ShowText="False" 
+                                    Size="Large"
+                                    LargeImage="{StaticResource MTextImage}"
+                                    Image="{StaticResource MTextImage}"                                      
+                                    CommandParameter="MText "/>
+            </adw:RibbonSplitButton>
+            <adw:RibbonRowPanel>
+                <adw:RibbonButton Id="ID_MyMove" Name="移动" Text = "移动"
+                                    ShowImage="True" ShowText="True" 
+                                    Size="Standard"
+                                    LargeImage="{StaticResource MoveImage}"
+                                    Image="{StaticResource MoveImage}"                                      
+                                    CommandParameter="Move "/>
+                <adw:RibbonRowBreak/>
+                <adw:RibbonButton Id="ID_MyCopy" Name="复制" Text = "复制"
+                                    ShowImage="True" ShowText="True" 
+                                    Size="Standard"
+                                    LargeImage="{StaticResource CopyImage}"
+                                    Image="{StaticResource CopyImage}"                                      
+                                    CommandParameter="Copy "/>
+                <adw:RibbonRowBreak/>
+                <adw:RibbonButton Id="ID_MyStretch" Name="拉伸" Text = "拉伸"
+                                    ShowImage="True" ShowText="True" 
+                                    Size="Standard"
+                                    LargeImage="{StaticResource StretchImage}"
+                                    Image="{StaticResource StretchImage}"                                      
+                                    CommandParameter="Stretch "/>
+                <adw:RibbonRowBreak/>
+            </adw:RibbonRowPanel>
+        </adw:RibbonPanelSource>
+    </adw:RibbonPanel>
+</adw:RibbonTab>
+</ResourceDictionary>

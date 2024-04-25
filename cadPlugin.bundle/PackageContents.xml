@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage SchemaVersion="1.0" AppVersion="1.0"
+    ProductCode="{02933C01-125D-48EF-B577-08C3AEF6A23F}"
+    Name="c3d测试插件"
+>
+  <CompanyDetails
+    Name="广东省电力设计院有限公司"
+    Email="1563930404@qq.com"
+  />
+  <RuntimeRequirements OS="Win32|Win64" Platform="AutoCAD*" SeriesMin="R22.0" SeriesMax="R23.1" />
+  <Components>
+    <ComponentEntry
+      ModuleName="./debug/AttachingExternalReference.dll"
+    />
+  </Components>
+</ApplicationPackage>

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCAD", "SQLCAD\SQLCAD.csproj", "{63C7942F-B4A0-446F-BAF1-2AEDAC02648A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessCAD", "AccessCAD\AccessCAD.csproj", "{D510C255-94D9-4CE1-B114-4F98AF1AD28F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCAD", "FileCAD\FileCAD.csproj", "{2ACE2B57-AC59-459D-B778-69954867512B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelCAD", "ExcelCAD\ExcelCAD.csproj", "{BFA91BFA-F731-4222-9AA0-175758E76F5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63C7942F-B4A0-446F-BAF1-2AEDAC02648A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C7942F-B4A0-446F-BAF1-2AEDAC02648A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C7942F-B4A0-446F-BAF1-2AEDAC02648A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C7942F-B4A0-446F-BAF1-2AEDAC02648A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D510C255-94D9-4CE1-B114-4F98AF1AD28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D510C255-94D9-4CE1-B114-4F98AF1AD28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D510C255-94D9-4CE1-B114-4F98AF1AD28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D510C255-94D9-4CE1-B114-4F98AF1AD28F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ACE2B57-AC59-459D-B778-69954867512B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACE2B57-AC59-459D-B778-69954867512B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACE2B57-AC59-459D-B778-69954867512B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACE2B57-AC59-459D-B778-69954867512B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA91BFA-F731-4222-9AA0-175758E76F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA91BFA-F731-4222-9AA0-175758E76F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA91BFA-F731-4222-9AA0-175758E76F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA91BFA-F731-4222-9AA0-175758E76F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

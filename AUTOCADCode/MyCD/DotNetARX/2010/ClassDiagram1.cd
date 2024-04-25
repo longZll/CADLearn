@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DotNetARX.AnnotateTools" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAARAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>AnnotateTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.ArcTools" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArcTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.BlockTools" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgCAEAAAABACAAgAAAAAACAgAgAAGgAAAAAAACA=</HashCode>
+      <FileName>BlockTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.CircleTools" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>CircleTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.CommandTools" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAAQAAAAAAAAAAAAAAAAAAAAACAAEAAAAACA=</HashCode>
+      <FileName>CommandTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.Preferences" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACIAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.CUITools" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAQAAABAAAAAAAEEAIACCCAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CUITools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.DictTools" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAEAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DictTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.DimStyleTools" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DimStyleTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.DimTools" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>DimTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.DocumentTools" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DocumentTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.Draw3DTools" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAgBAAIAAAgACAAAAAIEABAAAgAAQAAAAAAA=</HashCode>
+      <FileName>Draw3DTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.EllipseTools" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>EllipseTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.EntTools" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAIAAAAAmgAEAAAAAgABAAAAgAA=</HashCode>
+      <FileName>EntTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.GeTools" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAIAAkAAAAAAABAA=</HashCode>
+      <FileName>GeTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.GroupTools" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAEAAAAAABAAAQ=</HashCode>
+      <FileName>GroupTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.HatchPalletteDialog" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAgAEQAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HatchTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.HatchTools" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAIAAAAAAAAEA=</HashCode>
+      <FileName>HatchTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.LayerTools" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAqAAAAAAAAAA=</HashCode>
+      <FileName>LayerTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.LayoutTools" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAgAAAAAAAAAAAABAAAEAAAAAAA=</HashCode>
+      <FileName>LayoutTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.LineTypeTools" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAgAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LineTypeTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.LinqToCAD" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAIAAAAAAAAIAABABAAAAAAAA=</HashCode>
+      <FileName>LinqToCAD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.TypedValueList" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMABAAAAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ListTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.Point3dList" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ListTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.ObjectIdList" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ListTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.EntityList" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ListTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.MessageFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAQCA=</HashCode>
+      <FileName>MessageFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DotNetARX.MLineTools" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAA=</HashCode>
+      <FileName>MLineTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.PInvoke" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCCAAAAAAIgAEAAQAAAAAAABAAAAAAEARAgAAICBAA=</HashCode>
+      <FileName>PInvoke.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.PlotSettingsEx" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAEIhAComAAYFAAGCIECCAoIAEgAAAKAAAAIQAICE=</HashCode>
+      <FileName>PlotSettingsEx.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DotNetARX.PlotTools" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQgACAAAAAgACSAAAAAAAAAABAAAAAEAAAAAAA=</HashCode>
+      <FileName>PlotTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.PolylineTools" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAACAAAAAAAAIQAACAAAAAAAAAAA=</HashCode>
+      <FileName>PolylineTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.ProgressManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAIAAAAAACAAAAAAgAAAAAgAACAAAAAQAA=</HashCode>
+      <FileName>ProgressManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DotNetARX.RegionTools" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAAQAAAAAAAEQBACBQAQIgBAgAAABhACAAIAAAAE=</HashCode>
+      <FileName>RegionTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.Register" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAgAAAAABAAAAAAEAABAAAAAAEA=</HashCode>
+      <FileName>Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.SelectionTools" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SelectionTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.SummaryInfoTools" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAgAAIAAAAAgAAAAAAgAAAAAAAAAAAgEAAAAA=</HashCode>
+      <FileName>SummaryInfoTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.TableTools" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAADAAAAAAAAAAAAAAAggAAIAAAAAA=</HashCode>
+      <FileName>TableTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.TextStyleTools" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAEAQAAAAAAAAAAAAAAAAAAIAAIAAAAA=</HashCode>
+      <FileName>TextStyleTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.TextTools" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>TextTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.Tools" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABQAABwAAAACAAIQAAAAAAAAAAABAAAAwbAAAAAAg=</HashCode>
+      <FileName>Tools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.UCSTools" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAggAAAAAAAAAAAQAAAAAAAAgAAAAAAIAIAAAAA=</HashCode>
+      <FileName>UCSTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.ViewportTools" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewportTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.ViewTableTools" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEJAAAAAAAAAAAAAAAAEAgAEAACA=</HashCode>
+      <FileName>ViewTableTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.XDataTools" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>XDataTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetARX.XrefTools" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>XrefTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DotNetARX.DimFormatCode" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAACABMgAEAAAEgEAhAChAAAAAAAAAlAAihACABAEA=</HashCode>
+      <FileName>DimTools.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DotNetARX.DimArrowBlock" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAIAABAAAgAAAACAMAACAAABgVgAmAIEA=</HashCode>
+      <FileName>DimTools.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DotNetARX.LeaderBlockContent" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAoAAAAAAAAAACAACgA=</HashCode>
+      <FileName>DimTools.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DotNetARX.TextSpecialSymbol" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIAAAAiCAACAQAAAJAAAAgQAIAAARQABEkhAAAJAAQ=</HashCode>
+      <FileName>TextTools.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="DotNetARX.DynBlockPropTypeCode" Collapsed="true">
+    <Position X="9.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAACAQAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.ResBufCode" Collapsed="true">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAgAQgEAAQAAAACgwAAAACAAAAAAAAAgAEAAAQECAEA=</HashCode>
+      <FileName>CommandTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.FontStyle" Collapsed="true">
+    <Position X="4" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.AlignmentPointAcquisition" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.ARXDemandLoad" Collapsed="true">
+    <Position X="2.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.XRefDemandLoad" Collapsed="true">
+    <Position X="0.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAACAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.ProxyImage" Collapsed="true">
+    <Position X="5.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.SaveAsType" Collapsed="true">
+    <Position X="9.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAAAAAAAAAAAAAAAAABgAAAACAADAIAAQAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.OleQuality" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAACAAAAAAAABACAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.PlotPolicy" Collapsed="true">
+    <Position X="2.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.PrinterSpoolAlert" Collapsed="true">
+    <Position X="4" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAACAAAAAAAAAAAAAIAABAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.InsertUnits" Collapsed="true">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAIEgAIAAAAAEAIAAABAABAAEAhKAAgBQAAAAABIE=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.KeyboardAccelerator" Collapsed="true">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.KeyboardPriority" Collapsed="true">
+    <Position X="11" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.DrawingAreaSCMCommand" Collapsed="true">
+    <Position X="4" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.DrawingAreaSCMDefault" Collapsed="true">
+    <Position X="5.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.DrawingAreaSCMEdit" Collapsed="true">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COMTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.HatchGradientName" Collapsed="true">
+    <Position X="5.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABgCAAAAIAAAAAAAAAAAoAEAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>HatchTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.FontCharSet" Collapsed="true">
+    <Position X="11" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAEAAIAAAAAAAAAAAAAAAEAIAAAA=</HashCode>
+      <FileName>TextStyleTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.FontPitch" Collapsed="true">
+    <Position X="2.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAABAAAA=</HashCode>
+      <FileName>TextStyleTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.FontFamily" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAABAAgQAA=</HashCode>
+      <FileName>TextStyleTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DotNetARX.StackType" Collapsed="true">
+    <Position X="11" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TextTools.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

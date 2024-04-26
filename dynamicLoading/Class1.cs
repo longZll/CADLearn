@@ -20,11 +20,11 @@ namespace load
 
             // 创建一个AssemblyDependent实例，并传入dll文件的路径
             //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  //写上你dll的路径
-            //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
+            var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
 
             //F:\CADLearn\AUTOCADCode\MyCD\Chap06\outPutPath\Xreocrd.dll
 
-            var ad = new AssemblyDependent(@"F:\CADLearn\AUTOCADCode\MyCD\Chap06\outPutPath\Xreocrd.dll");  //写上你dll的路径
+            //var ad = new AssemblyDependent(@"F:\CADLearn\AUTOCADCode\MyCD\Chap06\outPutPath\Xreocrd.dll");  //写上你dll的路径
 
             // 调用Load方法加载dll，并返回加载信息
             var msg = ad.Load();
@@ -47,7 +47,7 @@ namespace load
             //如果所有dll都加载成功，则在编辑器中输出加载成功的信息
             if (allyes)
             {
-                ed.WriteMessage(Environment.NewLine + "dll文件链式加载成功! 请输入命令启动插件" + Environment.NewLine);
+                ed.WriteMessage(Environment.NewLine + "CADDevelopment.dll文件链式加载成功! 请输入 命令启动插件" + Environment.NewLine);
             }
             //如果ev为false，则注册AssemblyResolve事件处理程序
             if (!ev) 

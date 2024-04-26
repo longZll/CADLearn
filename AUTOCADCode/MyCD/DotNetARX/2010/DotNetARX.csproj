@@ -52,6 +52,10 @@
       <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Interop.AXDBLib">
+      <HintPath>..\..\..\..\netloadx\bin\Debug\net48\Interop.AXDBLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -105,17 +109,6 @@
     <Compile Include="ViewTableTools.cs" />
     <Compile Include="XDataTools.cs" />
     <Compile Include="XrefTools.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="InteropExtensionLib">
-      <Guid>{C3D19104-7A67-4EB0-B459-D5B2E734D430}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

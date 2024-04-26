@@ -9,6 +9,8 @@
 然后要修改你的项目中 AssemblyInfo.cs
 [assembly: AssemblyVersion("1.0.*")]
 
+
+
 2.若你的是net standard项目,增加.csproj文件,没有就自己创建一个
 不是net standard项目,则不需要
 <PropertyGroup>

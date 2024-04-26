@@ -26,10 +26,41 @@ namespace Xrecords
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 ed.WriteMessage("\n请选择表示房间、椅子的块及员工姓名文本");
-                ed.WriteMessage("\n1111111111");
-                ed.WriteMessage("\n2222222222");
+                ed.WriteMessage("\n111");
 
-                List<Entity> ents=db.GetSelection();
+                // 提示用户选择多个对象
+                PromptSelectionOptions opts = new PromptSelectionOptions();
+                opts.MessageForAdding = "选择多个对象: ";
+                opts.AllowDuplicates = false;
+
+                PromptSelectionResult result = ed.GetSelection(opts);
+
+                if (result.Status != PromptStatus.OK) return;
+
+                SelectionSet selSet = result.Value;
+
+                //ObjectId[] asdfa = selSet.GetObjectIds();
+
+                //List<Entity> ents = db.GetSelection();  //有问题,报错
+                List<Entity> ents=new List<Entity>();
+
+                // 遍历选中的每一个对象
+                foreach (SelectedObject selObj in selSet)
+                {
+                    if (selObj != null)
+                    {
+                        // 获取选中对象的ObjectId
+                        ObjectId objectId = selObj.ObjectId;
+                        // 你可以在这里添加任何你想做的操作，例如修改属性、移动等
+                        //ed.WriteMessage("\n选中的对象的ObjectId: " + id.ToString());
+
+                        Entity entity = trans.GetObject(objectId, OpenMode.ForRead) as Entity;
+
+                        ents.Add(entity);
+                    }
+                }
+
+                
 
                 //LINQ过滤只块
                 var blocks=from ent in ents
@@ -117,17 +148,33 @@ namespace Xrecords
             Document doc=Application.DocumentManager.MdiActiveDocument;
             Database db=doc.Database;
             Editor ed=doc.Editor;
+
+
+            ed.WriteMessage("\n333");
+
             //提示用户选择放置表格的位置
-            PromptPointResult pointResult = ed.GetPoint("\n请选择表放置的位置: ");
-            if (pointResult.Status != PromptStatus.OK) return;
+            //PromptPointResult pointResult = ed.GetPoint("\n请选择表放置的位置: ");
+
+            // 提示用户选择插入点
+            //PromptPointOptions opts = new PromptPointOptions("\n选择表格的插入点: ");
+            //PromptPointResult result = ed.GetPoint(opts);
+           
+            //if (result.Status != PromptStatus.OK) return;
+
+            //Point3d insertPoint = result.Value;
+
+            Point3d insertPoint = new Point3d(0,0,0);
 
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 //获取有名对象字典
                 DBDictionary dicts=(DBDictionary)trans.GetObject(db.NamedObjectsDictionaryId, OpenMode.ForRead);
-                
+
+
+
+                //TODO:这行代码有问题,需要排查问题的原因,报错editor
                 //获取模型空间中所有的多行文本
-                var mtexts=(from m in db.GetEntsInModelSpace<MText>()
+                var mtexts =(from m in db.GetEntsInModelSpace<MText>()    
                             let xrecord = m.ObjectId.GetXrecord("员工")   //获取名为员工的扩展记录
                             where xrecord != null               //只选择有员工扩展记录的文本
                             let Position = xrecord[0].Value.ToString()  //获取表示员工职位的扩展记录项
@@ -148,16 +195,21 @@ namespace Xrecords
                 tb.TableStyle = db.Tablestyle;  //设置表格的样式为数据库缺省样式
                 
                 //获取表格的行数和列数
-                tb.NumRows = mtexts.Count();
-                tb.NumColumns = 4;
+                //tb.NumRows = mtexts.Count();
+                //tb.NumColumns = 4;
+
+                tb.SetSize(mtexts.Count(), 4);
+
                 tb.SetRowHeight(3);         //行高
                 tb.SetColumnWidth(15);      //列宽
                 tb.SetTextHeight(1);        //文本高度
                 //设置数据单元格的对奇方式为居中
                 tb.SetAlignment(CellAlignment.MiddleCenter, RowType.DataRow);
-                //将表格放置到用户选择的点
-                tb.Position = pointResult.Value;
                 
+                //将表格放置到用户选择的点
+                //tb.Position = result.Value;
+                tb.Position = insertPoint;
+
                 //遍历多行文本集合，按行设置表格的内容
                 for (int i = 0; i < mtexts.Count; i++)
                 {

@@ -27,6 +27,7 @@ namespace MyXData
             if (entResult.Status != PromptStatus.OK) return;
 
             ObjectId id=entResult.ObjectId; //用户选择的多行文本的ObjectId
+
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 TypedValueList values=new TypedValueList(); //定义一个TypedValue列表

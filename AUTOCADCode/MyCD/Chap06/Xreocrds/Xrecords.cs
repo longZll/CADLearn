@@ -170,9 +170,8 @@ namespace Xrecords
                 //获取有名对象字典
                 DBDictionary dicts=(DBDictionary)trans.GetObject(db.NamedObjectsDictionaryId, OpenMode.ForRead);
 
-
-
                 //TODO:这行代码有问题,需要排查问题的原因,报错editor
+
                 //获取模型空间中所有的多行文本
                 var mtexts =(from m in db.GetEntsInModelSpace<MText>()    
                             let xrecord = m.ObjectId.GetXrecord("员工")   //获取名为员工的扩展记录

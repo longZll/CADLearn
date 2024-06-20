@@ -18,9 +18,14 @@ namespace load
             var db = doc.Database;
             var ed = doc.Editor;
 
-            // 创建一个AssemblyDependent实例，并传入dll文件的路径
+            // 创建一个AssemblyDependent实例，并传入dll文件的路径,编写不同的项目时候,只需要切换不同的dll的路径,然后重新生成即可, 在AuotCAD命令行中输入ww即可加载最新的插件。
             //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  //写上你dll的路径
-            var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
+            
+            //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
+
+            var ad = new AssemblyDependent(@"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\WBlockTest.dll");  //写上你dll的路径
+
+            //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\DwgFilePro.dll");  //写上你dll的路径
 
             //F:\CADLearn\AUTOCADCode\MyCD\Chap06\outPutPath\Xreocrd.dll
 

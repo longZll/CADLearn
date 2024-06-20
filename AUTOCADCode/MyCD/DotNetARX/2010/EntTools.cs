@@ -1,6 +1,8 @@
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DotNetARX
 {
@@ -353,7 +355,7 @@ namespace DotNetARX
             {
                 BlockTable bt = (BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
                 BlockTableRecord btRcd = (BlockTableRecord)trans.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForRead);
-                
+
                 foreach (ObjectId entId in btRcd)
                 {
                     Entity ent = trans.GetObject(entId, OpenMode.ForRead) as Entity;
@@ -362,5 +364,32 @@ namespace DotNetARX
             }
             return totalExt;
         }
+
+        /// <summary>
+        /// 获取实体对象所在的组的Id
+        /// </summary>
+        /// <param name="entId">实体的Id</param>
+        /// <returns></returns>
+        public static IEnumerable<ObjectId> GetGroups(this ObjectId entId)
+        {
+            DBObject obj = entId.GetObject(OpenMode.ForRead);  //打开实体
+            ObjectIdCollection ids = obj.GetPersistentReactorIds(); //获取实体对象所拥有的永久反应器(组也属于永久反应器之一)
+            if (ids != null && ids.Count > 0)
+            {
+                var groupIds = from ObjectId id in ids
+                               let reactor = id.GetObject(OpenMode.ForRead)
+                               where reactor is Group
+                               select id;
+
+                // 返回找到的组 ID 列表
+                return groupIds.ToList();
+
+            }
+
+            return null;
+
+        }
+
+
     }
 }

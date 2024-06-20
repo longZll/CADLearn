@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,18 +9,22 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DatabaseOperator</RootNamespace>
-    <AssemblyName>DatabaseOperator2</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AssemblyName>DatabaseOperator</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\outPutPath\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>..\outPutPath\DatabaseOperator.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,18 +33,29 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="accoremgd">
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="AcDbMgd">
-      <HintPath>..\..\..\..\..\ARX\ObjectARX 2008\inc\AcDbMgd.dll</HintPath>
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcMgd">
-      <HintPath>..\..\..\..\..\ARX\ObjectARX 2008\inc\AcMgd.dll</HintPath>
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Autodesk.AutoCAD.Interop.Common, Version=17.0.54.0, Culture=neutral, PublicKeyToken=eed84259d7cbf30b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\netloadx\bin\Debug\net47\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetARX">
-      <HintPath>..\..\..\DotNetARX\2007\bin\Debug\DotNetARX.dll</HintPath>
+      <HintPath>..\..\..\..\..\cadDevelopment\Install\bin\DotNetARX.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

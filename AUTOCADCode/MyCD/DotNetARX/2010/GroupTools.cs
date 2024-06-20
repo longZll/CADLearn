@@ -13,7 +13,7 @@ namespace DotNetARX
         /// </summary>
         /// <param name="db">数据库对象</param>
         /// <param name="groupName">组名</param>
-        /// <param name="ids">要加入实体的ObjectId集合</param>
+        /// <param name="ids">要加入组的实体的ObjectId集合</param>
         /// <returns>返回组的Id</returns>
         public static ObjectId CreateGroup(this Database db, string groupName, ObjectIdList ids)
         {
@@ -74,7 +74,7 @@ namespace DotNetARX
         }
 
         /// <summary>
-        /// 删除组
+        /// 通过组的名字删除组
         /// </summary>
         /// <param name="db">数据库对象</param>
         /// <param name="groupName">组名</param>

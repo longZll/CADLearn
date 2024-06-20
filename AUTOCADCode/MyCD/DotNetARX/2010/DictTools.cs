@@ -21,7 +21,7 @@ namespace DotNetARX
             if (obj.ExtensionDictionary.IsNull)
             {
                 obj.UpgradeOpen();                  //切换对象为写的状态
-                obj.CreateExtensionDictionary();   //为对象创建扩展字典
+                obj.CreateExtensionDictionary();    //为对象创建扩展字典
                 obj.DowngradeOpen();                //为了安全，将对象切换成读的状态
             }
             // 打开对象的扩展字典
@@ -34,7 +34,7 @@ namespace DotNetARX
             xrec.Data = values;// 指定扩展记录的内容
             dict.UpgradeOpen(); // 将扩展字典切换成写的状态
             
-            //在扩展字典中加入新建的扩展记录，并指定它的搜索关键字
+            //在扩展字典中加入新建的扩展记录，并指定它的搜索关键字(扩展记录的名称)
             ObjectId idXrec = dict.SetAt(searchKey, xrec);
             id.Database.TransactionManager.AddNewlyCreatedDBObject(xrec, true);
             dict.DowngradeOpen(); // 为了安全，将扩展字典切换成读的状态            
@@ -57,9 +57,9 @@ namespace DotNetARX
             
             //在扩展字典中搜索指定关键字的扩展记录，如果没找到则返回
             if (!dict.Contains(searchKey)) return null;
-            // 获取扩展记录的Id
-            ObjectId xrecordId=dict.GetAt(searchKey);
             
+            ObjectId xrecordId=dict.GetAt(searchKey);  // 获取扩展记录的Id
+
             //打开扩展记录并获取扩展记录的内容
             Xrecord xrecord=(Xrecord)xrecordId.GetObject(OpenMode.ForRead);
             return xrecord.Data; // 返回扩展记录的内容

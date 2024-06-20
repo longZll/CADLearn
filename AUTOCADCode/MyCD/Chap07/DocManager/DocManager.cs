@@ -8,6 +8,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using DotNetARX;
+
 namespace DocManager
 {
     public class DocManager
@@ -29,6 +30,7 @@ namespace DocManager
             //设置当前的活动文档为新打开的Dwg文件
             Application.DocumentManager.MdiActiveDocument = doc;
         }
+
         [CommandMethod("SaveDwg")]
         public void SaveDwg()
         {
@@ -41,6 +43,7 @@ namespace DocManager
             else
                 doc.Save();//保存当前文档
         }
+
         [CommandMethod("CreateNewDwg", CommandFlags.Session)]
         public void CreateNewDwg()
         {
@@ -58,6 +61,7 @@ namespace DocManager
                 trans.Commit();
             }
         }
+
         [CommandMethod("CloseAllDwgs", CommandFlags.Session)]
         public void CloseAllDwgs()
         {
@@ -66,8 +70,8 @@ namespace DocManager
             {
                 //如果文档中有运行的命令（不包括CloseAllDwgs命令）
                 if (doc.CommandInProgress != "" && doc.CommandInProgress != "CloseAllDwgs")
-                    doc.SendCommand("\x03\x03");//向命令行发出两个Esc命令，终止命令的运行
-                if (doc.IsReadOnly) doc.CloseAndDiscard();//如果是只读文件，直接关闭
+                    doc.SendCommand("\x03\x03");            //向命令行发出两个Esc命令，终止命令的运行
+                if (doc.IsReadOnly) doc.CloseAndDiscard();  //如果是只读文件，直接关闭
                 else //不是只读文件
                 {
                     if (docs.MdiActiveDocument != doc)//如果不是当前文档，则切换成当前文档

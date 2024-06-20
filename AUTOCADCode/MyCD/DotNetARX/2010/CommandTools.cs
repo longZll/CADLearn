@@ -145,24 +145,25 @@ namespace DotNetARX
         /// <param name="args">命令参数列表</param>
         public static void SendCommand(this Document doc, params string[] args)
         {
-            // 获取AutoCAD应用程序类型,25对应CAD2020
-            Type AcadApplicationType = Type.GetTypeFromProgID("AutoCAD.Application.25");
-            // 创建AutoCAD应用程序实例
+            //获取AutoCAD应用程序类型,25对应CAD2020,20对应CAD2016
+            Type AcadApplicationType = Type.GetTypeFromProgID("AutoCAD.Application.20");
+            //创建AutoCAD应用程序实例
             object AcadApplication = Activator.CreateInstance(AcadApplicationType);
 
             try
             {
-                // 将AutoCAD应用程序设置为可见状态
+                //将AutoCAD应用程序设置为可见状态
                 AcadApplicationType.InvokeMember("Visible", BindingFlags.SetProperty, null, AcadApplication, new object[] { true });
                 
-                // 将AutoCAD应用程序设置为窗口最大化状态
+                //将AutoCAD应用程序设置为窗口最大化状态
                 AcadApplicationType.InvokeMember("WindowState", BindingFlags.SetProperty, null, AcadApplication, new object[] { 2 });
 
-                // 构造命令参数数组
+                //构造命令参数数组
                 object[] argArray = new object[args.Length + 1];
                 argArray[0] = args.Length;
                 args.CopyTo(argArray, 1);
-                // 调用SendCommand方法执行AutoCAD命令
+
+                //调用SendCommand方法执行AutoCAD命令
                 AcadApplicationType.InvokeMember("SendCommand", BindingFlags.InvokeMethod, null, AcadApplication, argArray);
             }
             catch // 捕获异常

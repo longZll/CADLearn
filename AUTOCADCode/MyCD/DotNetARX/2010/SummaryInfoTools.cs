@@ -37,7 +37,7 @@ namespace DotNetARX
             DatabaseSummaryInfo info = db.SummaryInfo; //获取数据库摘要信息
             //获取摘要信息中的自定义属性集合
             System.Collections.IDictionaryEnumerator props = info.CustomProperties;
-            while (props.MoveNext())//遍历自定义属性
+            while (props.MoveNext())       //遍历自定义属性
             {
                 //如果存在指定的自定义属性，返回true
                 if (props.Key.ToString().ToUpper() == key.ToUpper()) return true;
@@ -54,7 +54,7 @@ namespace DotNetARX
         {
             //如果存在自定义属性，则说明肯定有摘要信息
             if (db.NumCustomProperties() > 0) return true;
-            DatabaseSummaryInfo info = db.SummaryInfo;//数据库的摘要信息
+            DatabaseSummaryInfo info = db.SummaryInfo;  //数据库的摘要信息
             //如果存在摘要信息，则返回true
             if (!info.Author.IsNullOrWhiteSpace() && !info.Comments.IsNullOrWhiteSpace()
                 && !info.HyperlinkBase.IsNullOrWhiteSpace() && !info.Keywords.IsNullOrWhiteSpace()
@@ -99,7 +99,7 @@ namespace DotNetARX
         {
             //获取TDINDWG系统变量，该变量存储编辑图形的总时间，该时间格式为<天数>.<天的小数部分> 
             double day = (double)Application.GetSystemVariable("TDINDWG");
-            return TimeSpan.FromDays(day);//返回一个时间间隔对象
+            return TimeSpan.FromDays(day);  //返回一个时间间隔对象
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ using Autodesk.AutoCAD.Runtime;
 namespace DotNetARX
 {
     /// <summary>
-    /// 辅助操作类
+    /// 辅助操作工具类
     /// </summary>
     public static partial class Tools
     {
@@ -33,7 +33,7 @@ namespace DotNetARX
         }
 
         /// <summary>
-        /// 获取当前.NET程序所在的目录
+        /// 用于获取当前正在执行的.NET程序所在的目录路径
         /// </summary>
         /// <returns>返回当前.NET程序所在的目录</returns>
         public static string GetCurrentPath()
@@ -43,14 +43,81 @@ namespace DotNetARX
         }
 
         /// <summary>
+        /// 获取当前.NET程序所在的目录
+        /// </summary>
+        /// <returns>返回当前.NET程序所在的目录</returns>
+        public static string GetCurrentPath2()
+        {
+            //AppDomain.CurrentDomain.BaseDirectory 是一种非常安全和常用的方式，获取当前应用程序的根目录
+
+            return AppDomain.CurrentDomain.BaseDirectory;
+        }
+
+
+
+        /// <summary>
+        /// 获取当前.NET程序所在的目录
+        /// </summary>
+        /// <returns>返回当前.NET程序所在的目录</returns>
+        public static string GetCurrentPath3()
+        {
+            // 获取当前正在执行的程序集
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            // 获取程序集的位置
+            string assemblyLocation = assembly.Location;
+
+            // 获取文件路径的目录部分，即不包含文件名的路径
+            string directoryPath = System.IO.Path.GetDirectoryName(assemblyLocation);
+
+            // 返回目录路径
+            return directoryPath;
+        }
+
+
+
+        /// <summary>
+        /// 获取当前加载的DLL文件的路径
+        /// </summary>
+        /// <returns>返回DLL文件的路径</returns>
+        public static string GetDllPath()
+        {
+            // 获取当前正在执行的程序集
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            // 获取程序集的位置
+            string assemblyLocation = assembly.Location;
+
+            // 返回程序集的位置
+            return assemblyLocation;
+        }
+
+        /// <summary>
+        /// 获取当前加载的DLL文件所在的目录
+        /// </summary>
+        /// <returns>返回DLL文件所在的目录</returns>
+        public static string GetDllDirectory()
+        {
+            // 获取DLL文件的路径
+            string assemblyLocation = GetDllPath();
+
+            // 获取文件路径的目录部分，即不包含文件名的路径
+            string directoryPath = System.IO.Path.GetDirectoryName(assemblyLocation);
+
+            // 返回目录路径
+            return directoryPath;
+        }
+
+
+        /// <summary>
         /// 判断字符串是否为空或空白
         /// </summary>
-        /// <param name="value">字符串</param>
+        /// <param name="str">字符串</param>
         /// <returns>如果字符串为空或空白，返回true，否则返回false</returns>
-        public static bool IsNullOrWhiteSpace(this string value)
+        public static bool IsNullOrWhiteSpace(this string str)
         {
-            if (value == null) return false;
-            return string.IsNullOrEmpty(value.Trim());
+            if (str == null) return false;
+            return string.IsNullOrEmpty(str.Trim());
         }
 
         /// <summary>

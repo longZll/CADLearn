@@ -10,8 +10,14 @@ using Autodesk.AutoCAD.Runtime;
 using DotNetARX;
 namespace XRefs
 {
+    /// <summary>
+    /// 外部参照管理
+    /// </summary>
     public class XRefs
     {
+        /// <summary>
+        /// 附着外部参照
+        /// </summary>
         [CommandMethod("AttachExternalReference")]
         public void AttachExternalReference()
         {
@@ -32,14 +38,17 @@ namespace XRefs
             keyOpt.Keywords.Add("O", "O", "O", false, true);
             keyOpt.Keywords.Default = "A";//缺省为附着型
             PromptResult keyResult=ed.GetKeywords(keyOpt);
-            bool isOverlay=keyResult.StringResult == "A" ? false : true;
+            bool isOverlay=keyResult.StringResult == "A" ? false : true;  //是否为覆盖型外部参照
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
-                //将外部参照插入到当前图形并在模型空间添加参照块
+                //将外部参照插入到当前图形,并在模型空间添加参照块
                 ObjectId xrefId = db.AttachXref(filename, System.IO.Path.GetFileNameWithoutExtension(filename), pt, new Scale3d(1, 1, 1), 0, isOverlay);
                 trans.Commit();
             }
         }
+        /// <summary>
+        /// 卸载外部参照,卸载名为“Annotation - Metric”的外部参照
+        /// </summary>
         [CommandMethod("UnloadExternalReference")]
         public void UnloadExternalReference()
         {
@@ -47,6 +56,7 @@ namespace XRefs
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 BlockTable bt=(BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
+                
                 foreach (ObjectId id in bt)//遍历块表
                 {
                     BlockTableRecord btr=(BlockTableRecord)trans.GetObject(id, OpenMode.ForRead);
@@ -54,17 +64,20 @@ namespace XRefs
                     if (btr.IsFromExternalReference && btr.Name == "Annotation - Metric")
                     {
                         db.UnloadXrefs(new ObjectIdList(id));
-                        break;//完成卸载指定的外部参照，跳出循环
+                        break;  //完成卸载指定的外部参照，跳出循环
                     }
                 }
                 trans.Commit();
             }
         }
-
+        /// <summary>
+        /// 访问当前文档中存在的外部参照，并在命令行上显示其名称和存在状态
+        /// </summary>
         [CommandMethod("ListXrefs")]
         public static void ListXrefs()
         {
             Database db=HostApplicationServices.WorkingDatabase;
+            
             //获取XrefGraph对象，该对象包含当前文档中的所有外部参照节点
             XrefGraph xgraph=db.GetHostDwgXrefGraph(true);
             //创建一个节点集合对象，用来保存当前XrefGraph中的节点
@@ -73,20 +86,30 @@ namespace XRefs
                 //遍历XrefGraph中的节点，并将其添加到节点集合中
                 for (int i = 0; i < xgraph.NumNodes; i++)
                     nodes.Add(xgraph.GetXrefNode(i));
+                
                 //第一个为当前文档本身，不属于外部参照，跳过
                 for (int i = 1; i < xgraph.NumNodes; i++)
                 {
                     //获取外部参照节点对象
                     XrefGraphNode node=xgraph.GetXrefNode(i);
+                    
                     //如果为嵌套节点，则访问其子节点
                     if (!node.IsNested)
                         getNestedNodes(xgraph, node, nodes, string.Empty);
                 }
             }
         }
+        /// <summary>
+        /// 获取嵌套节点
+        /// </summary>
+        /// <param name="xgraph"></param>
+        /// <param name="node"></param>
+        /// <param name="nodes"></param>
+        /// <param name="parent"></param>
         private static void getNestedNodes(XrefGraph xgraph, XrefGraphNode node, GraphNodeCollection nodes, string parent)
         {
             Document doc=Application.DocumentManager.MdiActiveDocument;
+            
             //输出外部参照节点的名称（含其父节点名称）和状态
             doc.Editor.WriteMessage("\n{0}({1}）", parent + node.Name, node.XrefStatus);
             //递归调用，以完成对嵌套节点的访问
@@ -95,38 +118,63 @@ namespace XRefs
                 getNestedNodes(xgraph, xgraph.GetXrefNode(nodes.IndexOf(node.Out(i))), nodes, parent + node.Name + "|");
             }
         }
+        /// <summary>
+        /// 附着光栅图像
+        /// </summary>
         [CommandMethod("AttachImage")]
         public void AttachImage()
         {
             Database db=HostApplicationServices.WorkingDatabase;
-            Point3d pt=Point3d.Origin;//图像插入点
+            //Editor ed = db.GetEditor();
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+
+            Point3d pt=Point3d.Origin;  //图像插入点,这里默认设置为原点
             //图像文件路径
-            string fileName=Tools.GetCurrentPath() + "\\child.jpg";
+            //string fileName=Tools.GetCurrentPath3() + "\\child.jpg";
+
+
+            //string path = Tools.GetDllDirectory();
+            string path = "F:/CADLearn/AUTOCADCode/MyCD/Chap07/outPutPath";
+
+            //使用 Path.Combine 拼接路径
+            string fileName = System.IO.Path.Combine(path, "child.jpg");
+
+            doc.Editor.WriteMessage("文件路径为:\n"+fileName);
+            
+
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 //访问当前文档的图像目录Id
                 ObjectId dictId=RasterImageDef.GetImageDictionary(db);
                 //如果图像目录不存在，则新建
                 if (dictId.IsNull) dictId = RasterImageDef.CreateImageDictionary(db);
+                
                 //获取图像目录，它是一个字典对象
                 DBDictionary dict=(DBDictionary)trans.GetObject(dictId, OpenMode.ForRead);
+                
                 RasterImageDef def=new RasterImageDef();//新建一个光栅图像定义对象
-                def.SourceFileName = fileName;//光栅图像的文件名
-                def.Load();//装载光栅图像定义对象
-                dict.UpgradeOpen();//切换图像目录对象为写的状态
-                //将光栅图像定义添加到图像目录
+                def.SourceFileName = fileName;  //光栅图像的文件名
+                def.Load();         //装载光栅图像定义对象
+                dict.UpgradeOpen(); //切换图像目录对象为写的状态
+                
+                //将光栅图像定义添加到图像定义字典中去
                 ObjectId defId=dict.SetAt("child", def);
                 trans.AddNewlyCreatedDBObject(def, true);//通知事务处理
-                RasterImage image=new RasterImage();//新建光栅图像
-                image.ImageDefId = defId;//设置光栅图像的定义
-                image.ShowImage = true;//显示光栅图像
+                
+                RasterImage image=new RasterImage();    //新建光栅图像
+                image.ImageDefId = defId;   //设置光栅图像的定义
+                image.ShowImage = true;     //显示光栅图像
+                
                 //将光栅图像放置在原点，大小为图像的原尺寸
                 image.Orientation = new CoordinateSystem3d(
-                    Point3d.Origin, new Vector3d(image.Width, 0, 0), new Vector3d(0, image.Height, 0));
+                    pt, new Vector3d(image.Width, 0, 0), new Vector3d(0, image.Height, 0));
+
                 db.AddToModelSpace(image);//将光栅图像添加到模型空间
+
                 //在光栅图像和光栅图像定义之间创建联系，防止在外部参照管理器中图像的状态为“未参照”
                 RasterImage.EnableReactors(true);
                 image.AssociateRasterDef(def);
+
                 trans.Commit();//提交事务处理
             }
         }

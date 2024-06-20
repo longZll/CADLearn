@@ -30,12 +30,13 @@ namespace DotNetARX
             if (isOverlay) xrefId = db.OverlayXref(fileName, blockName);
             //选择以附着的方式插入外部参照
             else xrefId = db.AttachXref(fileName, blockName);
+            
             //根据外部参照创建一个块参照，并指定其插入点
             BlockReference bref=new BlockReference(insertionPoint, xrefId);
-            bref.ScaleFactors = scaleFactors;//外部参照块的缩放因子
-            bref.Rotation = rotation;//外部参照块的旋转角度
-            db.AddToModelSpace(bref);//将外部参照块添加到模型空间
-            return xrefId;//返回外部参照的Id
+            bref.ScaleFactors = scaleFactors;   //外部参照块的缩放因子
+            bref.Rotation = rotation;           //外部参照块的旋转角度
+            db.AddToModelSpace(bref);           //将外部参照块添加到模型空间
+            return xrefId;                      //返回外部参照的Id
         }
     }
 }

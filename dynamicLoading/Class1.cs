@@ -22,7 +22,7 @@ namespace load
 
             //string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
             //string path = @"F:\cadDevelopment\Install\bin\DwgFilePro.dll";
-            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\XRefs.dll";
+            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap08\outPutPath\TranlateCoordinate.dll";
 
             //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  //写上你dll的路径
             //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径

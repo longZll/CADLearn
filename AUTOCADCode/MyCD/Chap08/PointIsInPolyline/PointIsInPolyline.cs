@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
@@ -7,17 +8,23 @@ using Autodesk.AutoCAD.Runtime;
 
 namespace PointIsInPolyline
 {
+    /// <summary>
+    /// 测试许多点是否在多段线内部的类
+    /// </summary>
     public class PointIsInPolyline
     {
-        // 测试许多点是否在多段线内部
+
+        /// <summary>
+        ///  测试许多点是否在多段线内部
+        /// </summary>
         [CommandMethod("TestPtInPoly")]
         public void TestPtInPoly()
         {
-            // 随机点测试的数量
+            //随机点测试的数量,初始值为100000
             int count = 100000;
-            //if (GetInputInteger("\n输入需要测试的点数量:", ref count))
+            if (GetInputInteger("\n输入需要测试的点数量:", ref count))
             {
-                // 提示用户选择一条多段线
+                //提示用户选择一条多段线
                 ObjectId polyId = new ObjectId();
                 Point3d pt = new Point3d();
                 if (PromptSelectEntity("\n选择需要进行测试的多段线:", ref polyId, ref pt))
@@ -28,46 +35,59 @@ namespace PointIsInPolyline
                         Polyline poly = trans.GetObject(polyId, OpenMode.ForWrite) as Polyline;
                         if (poly != null)
                         {
-                            BlockTable bt = (BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
-                            BlockTableRecord btr = (BlockTableRecord)trans.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
-
-                            // 在多段线包围框范围内随机生成点，测试点和多段线的位置关系
-                            Extents3d ext = poly.GeometricExtents;
-                            double margin = 10;
-                            double xmin = ext.MinPoint.X - margin;
-                            double ymin = ext.MinPoint.Y - margin;
-                            double xSpan = ext.MaxPoint.X - ext.MinPoint.X + 2 * margin;
-                            double ySpan = ext.MaxPoint.Y - ext.MinPoint.Y + 2 * margin;
-
-                            for (int i = 0; i < count; i++)
+                            if (!poly.Closed)
                             {
-                                Random rand = new Random(GetRandomSeed());
-                                int xRand = rand.Next();
-                                int yRand = rand.Next();
-                                Point2d ptTest = new Point2d(xmin + (Convert.ToDouble(xRand) / int.MaxValue) * xSpan,
-                                    ymin + (Convert.ToDouble(yRand) / int.MaxValue) * ySpan);
-                                int relation = PtRelationToPoly(poly, ptTest, 1.0E-4);
+                                Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
+                                ed.WriteMessage("\n选择的多段线不是闭合多段线.");
+                            }
+                            else
+                            {
+                                BlockTable bt = (BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
+                                BlockTableRecord btr = (BlockTableRecord)trans.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
 
-                                DBPoint dbPoint = new DBPoint(ToPoint3d(ptTest));
-                                switch (relation)
+                                //在多段线包围框范围内 随机生成点，测试点和多段线的位置关系
+                                Extents3d ext = poly.GeometricExtents;
+                                double margin = 10;
+                                double xmin = ext.MinPoint.X - margin;
+                                double ymin = ext.MinPoint.Y - margin;
+                                double xSpan = ext.MaxPoint.X - ext.MinPoint.X + 2 * margin;
+                                double ySpan = ext.MaxPoint.Y - ext.MinPoint.Y + 2 * margin;
+
+                                for (int i = 0; i < count; i++)
                                 {
-                                    case -1:
-                                        dbPoint.ColorIndex = 1;
-                                        break;
-                                    case 0:
-                                        dbPoint.ColorIndex = 5;
-                                        break;
-                                    case 1:
-                                        dbPoint.ColorIndex = 6;
-                                        break;
-                                    default:
-                                        break;
+                                    Random rand = new Random(GetRandomSeed());
+                                    int xRand = rand.Next();
+                                    int yRand = rand.Next();
+
+                                    Point2d ptTest = new Point2d(xmin + (Convert.ToDouble(xRand) / int.MaxValue) * xSpan,
+                                        ymin + (Convert.ToDouble(yRand) / int.MaxValue) * ySpan);
+
+                                    int relationRes = PtRelationToPoly(poly, ptTest, 1.0E-4);
+
+                                    DBPoint dbPoint = new DBPoint(ToPoint3d(ptTest));
+                                    switch (relationRes)
+                                    {
+                                        case -1:
+                                            dbPoint.ColorIndex = 1;  //多段线外部点-颜色为1:红色
+                                            break;
+                                        case 0:
+                                            dbPoint.ColorIndex = 5;  //多段线上面的点-颜色为5:蓝色
+                                            break;
+                                        case 1:
+                                            dbPoint.ColorIndex = 6;  //多段线内部点-颜色为6:洋红色
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    btr.AppendEntity(dbPoint);
+                                    trans.AddNewlyCreatedDBObject(dbPoint, true);
                                 }
-                                btr.AppendEntity(dbPoint);
-                                trans.AddNewlyCreatedDBObject(dbPoint, true);
+
+                                trans.Commit();
+
                             }
 
-                            trans.Commit();
+                           
                         }
                         else
                         {
@@ -79,7 +99,11 @@ namespace PointIsInPolyline
             }
         }
 
-        // 获得随机数种子
+
+        /// <summary>
+        /// 获得随机数种子
+        /// </summary>
+        /// <returns>整数随机数种子</returns>
         static int GetRandomSeed()
         {
             byte[] bytes = new byte[4];
@@ -89,15 +113,20 @@ namespace PointIsInPolyline
             return BitConverter.ToInt32(bytes, 0);
         }
 
-        // 判断点和多段线的位置关系
-        // 返回值：-1表示在多段线外部，0表示在多段线上，1表示在多段线内部
+        /// <summary>
+        /// 判断给定点和多段线的位置关系
+        /// </summary>
+        /// <param name="pPoly">多段线</param>
+        /// <param name="pt">给定点</param>
+        /// <param name="tol">容差值</param>
+        /// <returns>-1表示在多段线外部，0表示在多段线上，1表示在多段线内部</returns>
         private int PtRelationToPoly(Polyline pPoly, Point2d pt, double tol)
         {
-            Debug.Assert(pPoly != null);
+            Debug.Assert(pPoly != null); //使用断言检测参数的有效性，增强函数的健壮性
 
             // 1.如果点到多段线的最近点和给定的点重合，表示点在多段线上
-            Point3d closestPoint = pPoly.GetClosestPointTo(ToPoint3d(pt, pPoly.Elevation), false);		// 多段线上与给定点距离最近的点	
-            if (Math.Abs(closestPoint.X - pt.X) < tol && Math.Abs(closestPoint.Y - pt.Y) < tol)			// 点在多段线上
+            Point3d closestPoint = pPoly.GetClosestPointTo(ToPoint3d(pt, pPoly.Elevation), false);	//多段线上与给定点距离最近的点	
+            if (Math.Abs(closestPoint.X - pt.X) < tol && Math.Abs(closestPoint.Y - pt.Y) < tol)		//点在多段线上
             {
                 return 0;
             }
@@ -110,16 +139,17 @@ namespace PointIsInPolyline
             Vector3d vec = new Vector3d(-(closestPoint.X - pt.X), -(closestPoint.Y - pt.Y), 0);
             pRay.UnitDir = vec;
 
-            // 3.射线与多段线计算交点
+            // 3.射线与多段线计算交点的集合
             Point3dCollection intPoints = new Point3dCollection();
-            
-            pPoly.IntersectWith(pRay, Intersect.OnBothOperands, intPoints, 0, 0);
-            // IntersectWith函数经常会得到很近的交点，这些点必须进行过滤
-            FilterEqualPoints(intPoints, 1.0E-4);
+            pPoly.IntersectWith(pRay, Intersect.OnBothOperands, intPoints, IntPtr.Zero, IntPtr.Zero);
+
+            //IntersectWith函数经常会得到很近的交点，这些点必须进行过滤
+            FilterEqualPoints_TwoNestedoops(intPoints, 1.0E-4);
+            //FilterEqualPoints_HashSet(intPoints, 1.0E-4);
 
             // 4.判断点和多段线的位置关系
-        RETRY:
-            Point3d[] pts = new Point3d[10];		//////////////////////////////////////////////////////////////////////////
+            RETRY:
+            Point3d[] pts = new Point3d[10];		
             if (intPoints.Count > 0)
             {
                 pts[0] = intPoints[0];
@@ -145,7 +175,7 @@ namespace PointIsInPolyline
             else
             {
                 // 3.1 过滤掉由于射线被反向延长带来的影响
-                FilterEqualPoints(intPoints, ToPoint2d(closestPoint), 1.0E-4);		// 2008-0907修订记录：当pt距离最近点比较近的时候，最近点竟然被作为一个交点！
+                FilterEqualPoints(intPoints, ToPoint2d(closestPoint), 1.0E-4);  //2008-0907修订记录：当pt距离最近点比较近的时候，最近点竟然被作为一个交点！
                 // 3.2 如果某个交点与最近点在给定点的同一方向，要去掉这个点（这个点明显不是交点，还是由于intersectwith函数的Bug）	
                 for (int i = intPoints.Count - 1; i >= 0; i--)
                 {
@@ -159,32 +189,32 @@ namespace PointIsInPolyline
                 int count = intPoints.Count;
                 for (int i = 0; i < intPoints.Count; i++)
                 {
-                    if (PointIsPolyVert(pPoly, ToPoint2d(intPoints[i]), 1.0E-4))		// 只要有交点是多段线的顶点就重新进行判断
+                    if (PointIsPolyVert(pPoly, ToPoint2d(intPoints[i]), 1.0E-4))  //只要有交点是多段线的顶点就重新进行判断
                     {
-                        // 处理给定点很靠近多段线顶点的情况(如果与顶点距离很近，就认为这个点在多段线上，因为这种情况没有什么好的判断方法)
+                        //处理给定点 靠近多段线顶点的情况(如果与顶点距离很近，就认为这个点在多段线上，因为这种情况没有什么好的判断方法)
                         if (PointIsPolyVert(pPoly, new Point2d(pt.X, pt.Y), 1.0E-4))
                         {
                             return 0;
                         }
 
-                        // 将射线旋转一个极小的角度(2度)再次判断（假定这样不会再通过上次判断到的顶点）
+                        //将射线逆时针旋转一个极小的角度(2度)再次判断（假定这样不会再通过上次判断到的顶点）
                         vec = vec.RotateBy(0.035, Vector3d.ZAxis);
                         pRay.UnitDir = vec;
                         intPoints.Clear();
-                        pPoly.IntersectWith(pRay, Intersect.OnBothOperands, intPoints, 0, 0);
-                        goto RETRY;		// 继续判断结果
+                        pPoly.IntersectWith(pRay, Intersect.OnBothOperands, intPoints, IntPtr.Zero, IntPtr.Zero);
+                        goto RETRY;	    //继续判断结果
                     }
                 }
 
-                pRay.Dispose();
+                pRay.Dispose();  //销毁临时变量
 
                 if (count % 2 == 0)
                 {
-                    return -1;
+                    return -1; //如果是偶数,就认为在多段线外部
                 }
                 else
                 {
-                    return 1;
+                    return 1;   //如果不是偶数,就认为在多段线内部
                 }
             }
         }
@@ -201,13 +231,24 @@ namespace PointIsInPolyline
             return new Point3d(point2d.X, point2d.Y, 0);
         }
 
+        /// <summary>
+        /// 把二维点转化为给定标高的三维点
+        /// </summary>
+        /// <param name="point2d"></param>
+        /// <param name="elevation"></param>
+        /// <returns></returns>
         private static Point3d ToPoint3d(Point2d point2d, double elevation)
         {
             return new Point3d(point2d.X, point2d.Y, elevation);
         }
 
-        // 从点数组中删除与给定点平面位置重合的点
-        // tol: 判断点重合时的精度（两点之间的距离小于tol认为这两个点重合）
+
+        /// <summary>
+        /// 从点数组中删除与给定点 平面位置重合的点
+        /// </summary>
+        /// <param name="points">点数组</param>
+        /// <param name="pt">给定二维点</param>
+        /// <param name="tol">判断点重合时的精度（两点之间的距离小于tol认为这两个点重合）</param>
         static void FilterEqualPoints(Point3dCollection points, Point2d pt, double tol)
         {
             Point3dCollection tempPoints = new Point3dCollection();
@@ -222,8 +263,13 @@ namespace PointIsInPolyline
             points = tempPoints;
         }
 
-        // 从点数组中删除与其他点重合的点
-        static void FilterEqualPoints(Point3dCollection points, double tol)
+
+        /// <summary>
+        ///  从点数组中删除重合的点
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="tol"></param>
+        static void FilterEqualPoints_TwoNestedoops(Point3dCollection points, double tol)
         {
             for (int i = points.Count - 1; i > 0; i--)
             {
@@ -238,35 +284,101 @@ namespace PointIsInPolyline
             }
         }
 
-        // 点是否是多段线的顶点
-        static bool PointIsPolyVert(Polyline pPoly, Point2d pt, double tol)
-        {
-            for (int i = 0; i < pPoly.NumberOfVertices; i++)
-            {
-                Point3d vert = pPoly.GetPoint3dAt(i);
 
-                if (IsEqual(ToPoint2d(vert), pt, tol))
+        /// <summary>
+        /// 使用哈希表来存储已访问的点，可以将时间复杂度降低到 O(n)。
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="tol"></param>
+        static void FilterEqualPoints_HashSet(Point3dCollection points, double tol)
+        {
+            var uniquePoints = new HashSet<Point3d>(new Point3dComparer(tol));
+            for (int i = points.Count - 1; i >= 0; i--)
+            {
+                if (!uniquePoints.Add(points[i]))
+                {
+                    points.RemoveAt(i);
+                }
+            }
+        }
+
+        class Point3dComparer : IEqualityComparer<Point3d>
+        {
+            private double tol;
+
+            public Point3dComparer(double tol)
+            {
+                this.tol = tol;
+            }
+
+            public bool Equals(Point3d p1, Point3d p2)
+            {
+                return IsEqual(p1.X, p2.X, tol) && IsEqual(p1.Y, p2.Y, tol);
+            }
+
+            public int GetHashCode(Point3d point)
+            {
+                return point.X.GetHashCode() ^ point.Y.GetHashCode();
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// 判断给定点是否为多段线的顶点
+        /// </summary>
+        /// <param name="poly">多段线</param>
+        /// <param name="pt2d">给定点</param>
+        /// <param name="tol">容差值</param>
+        /// <returns>给定点是否为多段线的顶点,如果是就返回真,不是则返回假</returns>
+        static bool PointIsPolyVert(Polyline poly, Point2d pt2d, double tol)
+        {
+            for (int i = 0; i < poly.NumberOfVertices; i++)
+            {
+                Point3d vert = poly.GetPoint3dAt(i);
+                if (IsEqual(ToPoint2d(vert), pt2d, tol))
                 {
                     return true;
                 }
             }
-
             return false;
         }
 
-        // 二维点是否相同
+
+        /// <summary>
+        /// 判断两个二维点是否相同
+        /// </summary>
+        /// <param name="firstPoint">第一个二维点</param>
+        /// <param name="secondPoint">第二个二维点</param>
+        /// <param name="tol">容差值</param>
+        /// <returns>二维点是否相同</returns>
         static bool IsEqual(Point2d firstPoint, Point2d secondPoint, double tol)
         {
             return (Math.Abs(firstPoint.X - secondPoint.X) < tol && Math.Abs(firstPoint.Y - secondPoint.Y) < tol);
         }
 
-        // 两个实数是否相等
+        /// <summary>
+        /// 判断两个实数是否相等
+        /// </summary>
+        /// <param name="a">实数a</param>
+        /// <param name="b">实数b</param>
+        /// <param name="tol">容差值</param>
+        /// <returns>两个实数是否相等</returns>
         static bool IsEqual(double a, double b, double tol)
         {
             return (Math.Abs(a - b) < tol);
         }
 
-        // 提示用户选择一个实体
+
+        /// <summary>
+        /// 提示用户选择一个实体
+        /// </summary>
+        /// <param name="prompt">提示字符串</param>
+        /// <param name="entId">用户选中的单个实体的ObjectId</param>
+        /// <param name="pt">选中的点的坐标</param>
+        /// <returns>是否选中了实体</returns>
         public static bool PromptSelectEntity(string prompt, ref ObjectId entId, ref Point3d pt)
         {
             Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
@@ -284,7 +396,12 @@ namespace PointIsInPolyline
             }
         }
 
-        // 提示用户输入整数
+        /// <summary>
+        /// 提示用户输入整数
+        /// </summary>
+        /// <param name="prompt">提示字符串</param>
+        /// <param name="val"></param>
+        /// <returns>是否输入成功并确认</returns>
         public static bool GetInputInteger(string prompt, ref int val)
         {
             Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;

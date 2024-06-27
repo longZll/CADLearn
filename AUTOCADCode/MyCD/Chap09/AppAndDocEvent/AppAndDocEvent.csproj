@@ -24,6 +24,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,20 +38,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="accoremgd">
-      <HintPath>..\..\..\..\accoremgd.dll</HintPath>
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AcDbMgd">
-      <HintPath>..\..\..\..\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd">
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AcMgd">
-      <HintPath>..\..\..\..\acmgd.dll</HintPath>
+    <Reference Include="acmgd">
+      <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DotNetARX">
-      <HintPath>..\..\DotNetARX\2007\bin\Debug\DotNetARX.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DotNetARX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\outPutPath\DotNetARX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -8,6 +8,9 @@ using DotNetARX;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 namespace AppAndDocEvent
 {
+    /// <summary>
+    /// 应用程序和文档事件类
+    /// </summary>
     public class AppAndDocEvent : IExtensionApplication
     {
         ObjectId lineLayerId;       // 直线层Id
@@ -37,13 +40,12 @@ namespace AppAndDocEvent
             {
                 //提示用户是否真的需要关闭文档
                 DialogResult result = MessageBox.Show("文档将被关闭\n是否继续？", "关闭文档", MessageBoxButtons.YesNo);
-                if (result == DialogResult.No)//如果不选择关闭文档，则放弃文档关闭事件
+                if (result == DialogResult.No)  //如果不选择关闭文档，则放弃文档关闭事件
                 { e.Veto(); }
 
             };
 
-
-            //AutoCAD系统变量变化时通知用户
+            //AutoCAD系统变量变化时通知用户---使用Lambda语句简化事件的程序代码
             AcadApp.SystemVariableChanged += (sender, e) =>
             {
                 if (e.Name == "ORTHOMODE")  //如果ORTHOMODE系统变量发生变化
@@ -63,7 +65,7 @@ namespace AppAndDocEvent
             switch (e.GlobalCommandName)  //根据命令名执行不同的动作
             {
                 case "ERASE"://如果是删除对象
-                    e.Veto();//撤销删除动作,在AutoCAD中禁用了"删除"命令
+                    e.Veto();   //撤销删除动作,相当于在AutoCAD中禁用了"删除"命令---通过事件禁止了AutoCAD中命令的执行
                     Editor ed = AcadApp.DocumentManager.MdiActiveDocument.Editor;
                     ed.WriteMessage("\nERASE命令已经被禁止，无法删除对象！");
                     break;

@@ -1,6 +1,5 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Runtime;
-
 using System;
 
 namespace load
@@ -22,7 +21,7 @@ namespace load
 
             //string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
             //string path = @"F:\cadDevelopment\Install\bin\DwgFilePro.dll";
-            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap08\outPutPath\TranlateCoordinate.dll";
+            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap09\outPutPath\AppAndDocEvent.dll";
 
             //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  //写上你dll的路径
             //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
@@ -57,7 +56,6 @@ namespace load
                 AppDomain.CurrentDomain.AssemblyResolve += RunTimeCurrentDomain.DefaultAssemblyResolve;
                 ev = true;
             }
-
         }
 
     }

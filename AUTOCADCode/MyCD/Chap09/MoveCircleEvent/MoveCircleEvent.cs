@@ -8,6 +8,9 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 namespace MoveCircleEvent
 {
+    /// <summary>
+    /// 同心圆移动类
+    /// </summary>
     public class MoveCircleEvent
     {
         Database db = HostApplicationServices.WorkingDatabase;
@@ -38,7 +41,7 @@ namespace MoveCircleEvent
             //判断将要移动的对象是否为圆
             if (circle != null)
             {
-                //获取圆的中心，就是同心圆的圆心
+                //存储圆心坐标
                 startPoint = circle.Center;
             }
         }
@@ -69,6 +72,9 @@ namespace MoveCircleEvent
                 //获取选择集中的圆对象
                 SelectionSet sSet = resSel.Value;
                 ObjectId[] ids = sSet.GetObjectIds();
+
+                ed.WriteMessage("该图纸中Circle的个数为:"+ids.Length.ToString());
+
                 //开始事务处理
                 using (Transaction trans = db.TransactionManager.StartTransaction())
                 {

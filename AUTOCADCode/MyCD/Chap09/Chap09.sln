@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileOpener", "FileOpener\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachingExternalReference", "AttachingExternalReference\AttachingExternalReference.csproj", "{4395DD3C-09FB-4BFF-9915-2669AAE4755E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveTexts", "MoveTexts\MoveTexts.csproj", "{14249F1D-BA2F-46D8-9233-4017A32791F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4395DD3C-09FB-4BFF-9915-2669AAE4755E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4395DD3C-09FB-4BFF-9915-2669AAE4755E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4395DD3C-09FB-4BFF-9915-2669AAE4755E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14249F1D-BA2F-46D8-9233-4017A32791F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14249F1D-BA2F-46D8-9233-4017A32791F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14249F1D-BA2F-46D8-9233-4017A32791F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14249F1D-BA2F-46D8-9233-4017A32791F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

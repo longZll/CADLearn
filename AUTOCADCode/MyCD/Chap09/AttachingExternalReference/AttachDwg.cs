@@ -12,6 +12,9 @@ namespace AttachingExternalReference
 {
     public class AttachDwg
     {
+        /// <summary>
+        /// 加载外部参照
+        /// </summary>
         [CommandMethod("AttachingExternalReference")]
         public static void AttachingExternalReferenceDwg()
         {

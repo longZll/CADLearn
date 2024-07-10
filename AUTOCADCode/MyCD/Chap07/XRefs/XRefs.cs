@@ -25,12 +25,14 @@ namespace XRefs
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             //获取文档管理器对象以打开Dwg文件
             DocumentCollection docs = Application.DocumentManager;
+            
             //设置打开文件对话框的有关选项
             PromptOpenFileOptions opt = new PromptOpenFileOptions("\n请输入文件名：");
             opt.Filter = "图形(*.dwg)|*.dwg|图形(*.dxf)|*.dxf";
             opt.FilterIndex = 0;
             //根据打开文件对话框中用户的选择，获取文件名
             string filename = ed.GetFileNameForOpen(opt).StringResult;
+
             Point3d pt=Point3d.Origin;//外部参照的插入点
             //提示用户输入外部参照的类型，“A”为附着型，“O”为覆盖型
             PromptKeywordOptions keyOpt=new PromptKeywordOptions("\n请输入外部参照的类型[附着(A)/覆盖(O)]<A>");
@@ -39,6 +41,7 @@ namespace XRefs
             keyOpt.Keywords.Default = "A";//缺省为附着型
             PromptResult keyResult=ed.GetKeywords(keyOpt);
             bool isOverlay=keyResult.StringResult == "A" ? false : true;  //是否为覆盖型外部参照
+            
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 //将外部参照插入到当前图形,并在模型空间添加参照块
@@ -57,7 +60,7 @@ namespace XRefs
             {
                 BlockTable bt=(BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
                 
-                foreach (ObjectId id in bt)//遍历块表
+                foreach (ObjectId id in bt) //遍历块表
                 {
                     BlockTableRecord btr=(BlockTableRecord)trans.GetObject(id, OpenMode.ForRead);
                     //如果是名为“Annotation - Metric”的外部参照，则进行卸载
@@ -70,6 +73,7 @@ namespace XRefs
                 trans.Commit();
             }
         }
+
         /// <summary>
         /// 访问当前文档中存在的外部参照，并在命令行上显示其名称和存在状态
         /// </summary>
@@ -95,10 +99,13 @@ namespace XRefs
                     
                     //如果为嵌套节点，则访问其子节点
                     if (!node.IsNested)
+                    {
                         getNestedNodes(xgraph, node, nodes, string.Empty);
+                    }
                 }
             }
         }
+
         /// <summary>
         /// 获取嵌套节点
         /// </summary>
@@ -118,6 +125,7 @@ namespace XRefs
                 getNestedNodes(xgraph, xgraph.GetXrefNode(nodes.IndexOf(node.Out(i))), nodes, parent + node.Name + "|");
             }
         }
+
         /// <summary>
         /// 附着光栅图像
         /// </summary>
@@ -152,10 +160,10 @@ namespace XRefs
                 //获取图像目录，它是一个字典对象
                 DBDictionary dict=(DBDictionary)trans.GetObject(dictId, OpenMode.ForRead);
                 
-                RasterImageDef def=new RasterImageDef();//新建一个光栅图像定义对象
-                def.SourceFileName = fileName;  //光栅图像的文件名
-                def.Load();         //装载光栅图像定义对象
-                dict.UpgradeOpen(); //切换图像目录对象为写的状态
+                RasterImageDef def=new RasterImageDef();    //新建一个光栅图像定义对象
+                def.SourceFileName = fileName;              //光栅图像的文件名
+                def.Load();                                 //装载光栅图像定义对象
+                dict.UpgradeOpen();                         //切换图像目录对象为写的状态
                 
                 //将光栅图像定义添加到图像定义字典中去
                 ObjectId defId=dict.SetAt("child", def);
@@ -169,7 +177,7 @@ namespace XRefs
                 image.Orientation = new CoordinateSystem3d(
                     pt, new Vector3d(image.Width, 0, 0), new Vector3d(0, image.Height, 0));
 
-                db.AddToModelSpace(image);//将光栅图像添加到模型空间
+                db.AddToModelSpace(image);  //将光栅图像添加到模型空间
 
                 //在光栅图像和光栅图像定义之间创建联系，防止在外部参照管理器中图像的状态为“未参照”
                 RasterImage.EnableReactors(true);

@@ -9,7 +9,7 @@ namespace CADDialog
 {
     public class CADDialog
     {
-        [CommandMethod("CADDialog")]
+        [CommandMethod("FormLayer")]
         public void ShowCADDialog()
         {
             //显示自定义的图层特性管理器模态对话框

@@ -6,6 +6,9 @@ using Autodesk.AutoCAD.Runtime;
 using DotNetARX;
 namespace MyXData
 {
+    /// <summary>
+    /// 扩展数据类
+    /// </summary>
     public class MyXData
     {
         /// <summary>
@@ -26,7 +29,7 @@ namespace MyXData
 
             if (entResult.Status != PromptStatus.OK) return;
 
-            ObjectId id=entResult.ObjectId; //用户选择的多行文本的ObjectId
+            ObjectId id=entResult.ObjectId;     //用户选择的多行文本的ObjectId
 
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
@@ -91,6 +94,9 @@ namespace MyXData
             }
         }
 
+        /// <summary>
+        /// 开始鼠标监控事件,在鼠标停留处显示提示信息
+        /// </summary>
         [CommandMethod("StartMonitor")]
         public void StartMonitor()
         {
@@ -99,6 +105,11 @@ namespace MyXData
             ed.PointMonitor += new PointMonitorEventHandler(ed_PointMonitor);
         }
 
+        /// <summary>
+        /// 在鼠标停留处(如果为多行文本,且应用程序名为“EMPLOYEE”)显示提示信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ed_PointMonitor(object sender, PointMonitorEventArgs e)
         {
             string employeeInfo=""; //用于存储员工的信息：编号和职位
@@ -117,7 +128,7 @@ namespace MyXData
                     //获取鼠标停留处的实体
                     FullSubentityPath path=paths[0];
                     MText mtext=trans.GetObject(path.GetObjectIds()[0], OpenMode.ForRead) as MText;
-                    if (mtext != null)//如果鼠标停留处为多行文本
+                    if (mtext != null)  //如果鼠标停留处为多行文本
                     {
                         //获取多行文本中应用程序名为“EMPLOYEE”的扩展数据
                         TypedValueList xdata=mtext.ObjectId.GetXData("EMPLOYEE");
@@ -136,6 +147,9 @@ namespace MyXData
             }
         }
 
+        /// <summary>
+        /// 停止鼠标监控事件
+        /// </summary>
         [CommandMethod("StopMonitor")]
         public void StopMonitor()
         {

@@ -36,8 +36,10 @@ namespace SummaryInfos
             info.RevisionNumber = "V1.0";   //修订次数
             info.Subject = "二次开发";      //主题
             info.Title = "AutoCAD .NET开发基础与实例教程";//标题
-            info.CustomProperties.Add("Size", "A4");    //自定义属性
-            info.CustomProperties.Add("Language", "Chinese");//自定义属性            
+            info.CustomProperties.Add("Size", "A4");         //自定义属性
+            info.CustomProperties.Add("Language", "Chinese");//自定义属性
+            //info.CustomPropertyTable.Add();
+
             db.SummaryInfo = info.ToDatabaseSummaryInfo();//保存摘要信息            
         }
 

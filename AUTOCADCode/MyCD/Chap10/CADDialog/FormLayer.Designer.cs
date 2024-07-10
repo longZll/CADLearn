@@ -41,15 +41,15 @@
             this.ColumnIsPlottable = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.ColumnViewportVisibilityDefault = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.ColumnDescription = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.buttonNewLayer = new System.Windows.Forms.Button();
-            this.buttonNewLayerFrozen = new System.Windows.Forms.Button();
-            this.buttonDeleteLayer = new System.Windows.Forms.Button();
-            this.buttonSetCurrentLayer = new System.Windows.Forms.Button();
             this.textBoxCurrentLayer = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
+            this.buttonSetCurrentLayer = new System.Windows.Forms.Button();
+            this.buttonDeleteLayer = new System.Windows.Forms.Button();
+            this.buttonNewLayerFrozen = new System.Windows.Forms.Button();
+            this.buttonNewLayer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.olvLayerManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +82,7 @@
             this.ColumnViewportVisibilityDefault,
             this.ColumnDescription});
             this.olvLayerManager.FullRowSelect = true;
+            this.olvLayerManager.HideSelection = false;
             this.olvLayerManager.Location = new System.Drawing.Point(24, 56);
             this.olvLayerManager.Name = "olvLayerManager";
             this.olvLayerManager.ShowGroups = false;
@@ -91,6 +92,7 @@
             this.olvLayerManager.UseCompatibleStateImageBehavior = false;
             this.olvLayerManager.View = System.Windows.Forms.View.Details;
             this.olvLayerManager.CellClick += new System.EventHandler<BrightIdeasSoftware.CellClickEventArgs>(this.olvLayerManager_CellClick);
+            this.olvLayerManager.SelectedIndexChanged += new System.EventHandler(this.olvLayerManager_SelectedIndexChanged);
             // 
             // ColumnState
             // 
@@ -169,46 +171,6 @@
             this.ColumnDescription.IsEditable = false;
             this.ColumnDescription.Text = "说明";
             // 
-            // buttonNewLayer
-            // 
-            this.buttonNewLayer.Image = global::CADDialog.CADResource.ButtonNew;
-            this.buttonNewLayer.Location = new System.Drawing.Point(34, 24);
-            this.buttonNewLayer.Name = "buttonNewLayer";
-            this.buttonNewLayer.Size = new System.Drawing.Size(21, 23);
-            this.buttonNewLayer.TabIndex = 1;
-            this.buttonNewLayer.UseVisualStyleBackColor = true;
-            this.buttonNewLayer.Click += new System.EventHandler(this.buttonNewLayer_Click);
-            // 
-            // buttonNewLayerFrozen
-            // 
-            this.buttonNewLayerFrozen.Image = global::CADDialog.CADResource.ButtonNewFreeze;
-            this.buttonNewLayerFrozen.Location = new System.Drawing.Point(61, 24);
-            this.buttonNewLayerFrozen.Name = "buttonNewLayerFrozen";
-            this.buttonNewLayerFrozen.Size = new System.Drawing.Size(25, 23);
-            this.buttonNewLayerFrozen.TabIndex = 2;
-            this.buttonNewLayerFrozen.UseVisualStyleBackColor = true;
-            this.buttonNewLayerFrozen.Click += new System.EventHandler(this.buttonNewLayerFrozen_Click);
-            // 
-            // buttonDeleteLayer
-            // 
-            this.buttonDeleteLayer.Image = global::CADDialog.CADResource.ButtonDelete;
-            this.buttonDeleteLayer.Location = new System.Drawing.Point(92, 24);
-            this.buttonDeleteLayer.Name = "buttonDeleteLayer";
-            this.buttonDeleteLayer.Size = new System.Drawing.Size(29, 23);
-            this.buttonDeleteLayer.TabIndex = 3;
-            this.buttonDeleteLayer.UseVisualStyleBackColor = true;
-            this.buttonDeleteLayer.Click += new System.EventHandler(this.buttonDeleteLayer_Click);
-            // 
-            // buttonSetCurrentLayer
-            // 
-            this.buttonSetCurrentLayer.Image = global::CADDialog.CADResource.IsCurrentTrue;
-            this.buttonSetCurrentLayer.Location = new System.Drawing.Point(127, 24);
-            this.buttonSetCurrentLayer.Name = "buttonSetCurrentLayer";
-            this.buttonSetCurrentLayer.Size = new System.Drawing.Size(28, 23);
-            this.buttonSetCurrentLayer.TabIndex = 4;
-            this.buttonSetCurrentLayer.UseVisualStyleBackColor = true;
-            this.buttonSetCurrentLayer.Click += new System.EventHandler(this.buttonSetCurrentLayer_Click);
-            // 
             // textBoxCurrentLayer
             // 
             this.textBoxCurrentLayer.Location = new System.Drawing.Point(179, 26);
@@ -256,6 +218,46 @@
             this.buttonApply.Text = "应用(&A)";
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
+            // buttonSetCurrentLayer
+            // 
+            this.buttonSetCurrentLayer.Image = global::CADDialog.CADResource.IsCurrentTrue;
+            this.buttonSetCurrentLayer.Location = new System.Drawing.Point(127, 24);
+            this.buttonSetCurrentLayer.Name = "buttonSetCurrentLayer";
+            this.buttonSetCurrentLayer.Size = new System.Drawing.Size(28, 23);
+            this.buttonSetCurrentLayer.TabIndex = 4;
+            this.buttonSetCurrentLayer.UseVisualStyleBackColor = true;
+            this.buttonSetCurrentLayer.Click += new System.EventHandler(this.buttonSetCurrentLayer_Click);
+            // 
+            // buttonDeleteLayer
+            // 
+            this.buttonDeleteLayer.Image = global::CADDialog.CADResource.ButtonDelete;
+            this.buttonDeleteLayer.Location = new System.Drawing.Point(92, 24);
+            this.buttonDeleteLayer.Name = "buttonDeleteLayer";
+            this.buttonDeleteLayer.Size = new System.Drawing.Size(29, 23);
+            this.buttonDeleteLayer.TabIndex = 3;
+            this.buttonDeleteLayer.UseVisualStyleBackColor = true;
+            this.buttonDeleteLayer.Click += new System.EventHandler(this.buttonDeleteLayer_Click);
+            // 
+            // buttonNewLayerFrozen
+            // 
+            this.buttonNewLayerFrozen.Image = global::CADDialog.CADResource.ButtonNewFreeze;
+            this.buttonNewLayerFrozen.Location = new System.Drawing.Point(61, 24);
+            this.buttonNewLayerFrozen.Name = "buttonNewLayerFrozen";
+            this.buttonNewLayerFrozen.Size = new System.Drawing.Size(25, 23);
+            this.buttonNewLayerFrozen.TabIndex = 2;
+            this.buttonNewLayerFrozen.UseVisualStyleBackColor = true;
+            this.buttonNewLayerFrozen.Click += new System.EventHandler(this.buttonNewLayerFrozen_Click);
+            // 
+            // buttonNewLayer
+            // 
+            this.buttonNewLayer.Image = global::CADDialog.CADResource.ButtonNew;
+            this.buttonNewLayer.Location = new System.Drawing.Point(34, 24);
+            this.buttonNewLayer.Name = "buttonNewLayer";
+            this.buttonNewLayer.Size = new System.Drawing.Size(21, 23);
+            this.buttonNewLayer.TabIndex = 1;
+            this.buttonNewLayer.UseVisualStyleBackColor = true;
+            this.buttonNewLayer.Click += new System.EventHandler(this.buttonNewLayer_Click);
             // 
             // FormLayer
             // 

@@ -17,14 +17,14 @@ namespace CADDialog
 {
     public partial class FormLayer : Form
     {
-        Document doc;//文档
-        Database db;//数据库
+        Document doc;   //文档
+        Database db;    //数据库
         //在对话框存在期间，必须保持事务处理为打开状态
-        Transaction trans;//事务处理
+        Transaction trans;  //事务处理
         public FormLayer()
         {
             InitializeComponent();
-            InitializeListView();//初始化列表视图控件
+            InitializeListView();   //初始化列表视图控件
         }
         private void InitializeListView()
         {
@@ -79,7 +79,7 @@ namespace CADDialog
                     //获取列表视图中的模型对象:层的ObjectId
                     ObjectId layerId=(ObjectId)o;
                     LayerTableRecord ltr=(LayerTableRecord)layerId.GetObject(OpenMode.ForRead);
-                    return ltr.Name;//返回图层名为本列内容
+                    return ltr.Name;    //返回图层名为本列内容
                 };
 
                 //设置图层打开状态列（图像表示）
@@ -260,7 +260,7 @@ namespace CADDialog
         {
             using (DocumentLock loc=doc.LockDocument())
             {
-                //列表实视图中被选择的层
+                //列表视图中被选择的层
                 ObjectId layerId=(ObjectId)this.olvLayerManager.SelectedObject;
                 db.Clayer = layerId;//设置该层为当前层
                 this.olvLayerManager.BuildList();//更新列表视图的状态
@@ -364,10 +364,15 @@ namespace CADDialog
         {
             if (trans != null)
             {
-                trans.Abort();//放弃事务处理
+                trans.Abort();  //放弃事务处理
                 trans = null;
             }
             this.Dispose();
+        }
+
+        private void olvLayerManager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

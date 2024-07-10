@@ -9,8 +9,11 @@ namespace Blocks
 {
     public class Blocks
     {
-        [CommandMethod("Door")]
-        public void MakeDoor()
+        /// <summary>
+        /// 制作门
+        /// </summary>
+        [CommandMethod("MakeDoorBlock")]
+        public void MakeDoorBlock()
         {
             Database db=HostApplicationServices.WorkingDatabase;
             Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
@@ -43,10 +46,13 @@ namespace Blocks
 
 
                 // 显示成功消息
-                ed.WriteMessage("\n已经成功制作了一个门！");
+                ed.WriteMessage("\n已经成功制作了一个门图块！");
             }
         }
 
+        /// <summary>
+        /// 插入门图块
+        /// </summary>
         [CommandMethod("InsertDoor")]
         public void InsertDoor()
         {
@@ -54,9 +60,9 @@ namespace Blocks
 
             Database db=HostApplicationServices.WorkingDatabase;
             Editor ed = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor;
-            ObjectId spaceId=db.CurrentSpaceId;//获取当前空间（模型空间或图纸空间）
+            ObjectId spaceId=db.CurrentSpaceId; //获取当前空间（模型空间或图纸空间）
 
-            MakeDoor();
+            MakeDoorBlock();
 
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
@@ -69,7 +75,7 @@ namespace Blocks
                 trans.Commit();
 
                 // 显示成功消息
-                ed.WriteMessage("\n已经成功将门图块插入到dwg中！");
+                ed.WriteMessage("\n已经成功将门图块插入到本图纸中！");
                 //增加范围缩放功能
                 doc.SendStringToExecute("_.zoom E ", true, false, true);
             }

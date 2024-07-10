@@ -63,6 +63,9 @@ namespace MLineStyles
             }
         }
 
+        /// <summary>
+        /// 删除多线样式
+        /// </summary>
         [CommandMethod("DelMLineStyle")]
         public void DelMLineStyle()
         {

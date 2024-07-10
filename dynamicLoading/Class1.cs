@@ -19,11 +19,16 @@ namespace load
 
             //创建一个AssemblyDependent实例，并传入dll文件的路径,编写不同的项目时候,只需要切换不同的dll的路径,然后重新生成即可, 在AuotCAD命令行中输入ww即可加载最新的插件。
 
-            //string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
-            //string path = @"F:\cadDevelopment\Install\bin\DwgFilePro.dll";
-            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap09\outPutPath\AppAndDocEvent.dll";
 
-            //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  //写上你dll的路径
+            //写上你dll的路径
+
+            //string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
+            string path = @"F:\cadDevelopment\Install\bin\DwgFilePro.dll";
+            //string path = @" F:\bigDataResultUp\DocWatch\DocWatchService\dll\XattachGEDI.dll";
+            //string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\WBlockTest.dll";
+            //string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\XRefs.dll";
+
+            //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  
             //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径
 
             var ad = new AssemblyDependent(path);
@@ -48,7 +53,7 @@ namespace load
             //如果所有dll都加载成功，则在编辑器中输出加载成功的信息
             if (allyes)
             {
-                ed.WriteMessage(Environment.NewLine + path + "文件链式加载成功! 请输入相应的命令启动插件中相应的功能" + Environment.NewLine);
+                ed.WriteMessage(Environment.NewLine + path + "文件链式加载成功! 请输入插件中相应的命令以启动插件中相应功能!" + Environment.NewLine);
             }
             //如果ev为false，则注册AssemblyResolve事件处理程序
             if (!ev)

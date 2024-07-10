@@ -1,5 +1,8 @@
 namespace chap10
 {
+    /// <summary>
+    /// 模态对话框
+    /// </summary>
     partial class ModalForm
     {
         /// <summary>
@@ -30,7 +33,6 @@ namespace chap10
         {
             this.pictureBoxBlock = new System.Windows.Forms.PictureBox();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxBlockRatio = new System.Windows.Forms.TextBox();
@@ -40,7 +42,6 @@ namespace chap10
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxRotateAngle = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.checkBoxRotate = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxScaleY = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace chap10
             this.textBoxScaleX = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBoxSameScale = new System.Windows.Forms.CheckBox();
-            this.checkBoxScale = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxInsertPointY = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,7 +57,6 @@ namespace chap10
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxInsertPointX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxInsertPoint = new System.Windows.Forms.CheckBox();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.comboBoxBlockName = new System.Windows.Forms.ComboBox();
             this.labelPathlabelPath = new System.Windows.Forms.Label();
@@ -72,16 +71,17 @@ namespace chap10
             // pictureBoxBlock
             // 
             this.pictureBoxBlock.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBoxBlock.Location = new System.Drawing.Point(380, 16);
+            this.pictureBoxBlock.Location = new System.Drawing.Point(395, 16);
             this.pictureBoxBlock.Name = "pictureBoxBlock";
             this.pictureBoxBlock.Size = new System.Drawing.Size(75, 47);
             this.pictureBoxBlock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxBlock.TabIndex = 32;
             this.pictureBoxBlock.TabStop = false;
+            this.pictureBoxBlock.Click += new System.EventHandler(this.pictureBoxBlock_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(303, 226);
+            this.buttonCancel.Location = new System.Drawing.Point(271, 228);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 31;
@@ -89,19 +89,9 @@ namespace chap10
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // buttonHelp
-            // 
-            this.buttonHelp.Location = new System.Drawing.Point(389, 226);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(75, 23);
-            this.buttonHelp.TabIndex = 29;
-            this.buttonHelp.Text = "帮助(&H)";
-            this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(217, 227);
+            this.buttonOK.Location = new System.Drawing.Point(126, 227);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 30;
@@ -132,7 +122,7 @@ namespace chap10
             // 
             // textBoxBlockUnit
             // 
-            this.textBoxBlockUnit.Location = new System.Drawing.Point(46, 14);
+            this.textBoxBlockUnit.Location = new System.Drawing.Point(46, 18);
             this.textBoxBlockUnit.Name = "textBoxBlockUnit";
             this.textBoxBlockUnit.ReadOnly = true;
             this.textBoxBlockUnit.Size = new System.Drawing.Size(78, 21);
@@ -150,7 +140,7 @@ namespace chap10
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 17);
+            this.label9.Location = new System.Drawing.Point(5, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 12);
             this.label9.TabIndex = 1;
@@ -160,7 +150,6 @@ namespace chap10
             // 
             this.groupBox3.Controls.Add(this.textBoxRotateAngle);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.checkBoxRotate);
             this.groupBox3.Location = new System.Drawing.Point(334, 69);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(130, 73);
@@ -185,17 +174,6 @@ namespace chap10
             this.label11.TabIndex = 1;
             this.label11.Text = "角度(&A):";
             // 
-            // checkBoxRotate
-            // 
-            this.checkBoxRotate.AutoSize = true;
-            this.checkBoxRotate.Location = new System.Drawing.Point(7, 21);
-            this.checkBoxRotate.Name = "checkBoxRotate";
-            this.checkBoxRotate.Size = new System.Drawing.Size(114, 16);
-            this.checkBoxRotate.TabIndex = 0;
-            this.checkBoxRotate.Text = "在屏幕上指定(&C)";
-            this.checkBoxRotate.UseVisualStyleBackColor = true;
-            this.checkBoxRotate.CheckedChanged += new System.EventHandler(this.checkBoxRotate_CheckedChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBoxScaleY);
@@ -205,7 +183,6 @@ namespace chap10
             this.groupBox2.Controls.Add(this.textBoxScaleX);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.checkBoxSameScale);
-            this.groupBox2.Controls.Add(this.checkBoxScale);
             this.groupBox2.Location = new System.Drawing.Point(177, 69);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(151, 151);
@@ -277,17 +254,6 @@ namespace chap10
             this.checkBoxSameScale.UseVisualStyleBackColor = true;
             this.checkBoxSameScale.CheckedChanged += new System.EventHandler(this.checkBoxSameScale_CheckedChanged);
             // 
-            // checkBoxScale
-            // 
-            this.checkBoxScale.AutoSize = true;
-            this.checkBoxScale.Location = new System.Drawing.Point(7, 21);
-            this.checkBoxScale.Name = "checkBoxScale";
-            this.checkBoxScale.Size = new System.Drawing.Size(114, 16);
-            this.checkBoxScale.TabIndex = 0;
-            this.checkBoxScale.Text = "在屏幕上指定(&E)";
-            this.checkBoxScale.UseVisualStyleBackColor = true;
-            this.checkBoxScale.CheckedChanged += new System.EventHandler(this.checkBoxScale_CheckedChanged);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBoxInsertPointY);
@@ -296,7 +262,6 @@ namespace chap10
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxInsertPointX);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.checkBoxInsertPoint);
             this.groupBox1.Location = new System.Drawing.Point(20, 69);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(151, 151);
@@ -358,20 +323,9 @@ namespace chap10
             this.label3.TabIndex = 1;
             this.label3.Text = "&X:";
             // 
-            // checkBoxInsertPoint
-            // 
-            this.checkBoxInsertPoint.AutoSize = true;
-            this.checkBoxInsertPoint.Location = new System.Drawing.Point(7, 21);
-            this.checkBoxInsertPoint.Name = "checkBoxInsertPoint";
-            this.checkBoxInsertPoint.Size = new System.Drawing.Size(114, 16);
-            this.checkBoxInsertPoint.TabIndex = 0;
-            this.checkBoxInsertPoint.Text = "在屏幕上指定(&S)";
-            this.checkBoxInsertPoint.UseVisualStyleBackColor = true;
-            this.checkBoxInsertPoint.CheckedChanged += new System.EventHandler(this.checkBoxInsertPoint_CheckedChanged);
-            // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(284, 22);
+            this.buttonBrowse.Location = new System.Drawing.Point(284, 17);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(74, 23);
             this.buttonBrowse.TabIndex = 24;
@@ -382,7 +336,7 @@ namespace chap10
             // comboBoxBlockName
             // 
             this.comboBoxBlockName.FormattingEnabled = true;
-            this.comboBoxBlockName.Location = new System.Drawing.Point(77, 24);
+            this.comboBoxBlockName.Location = new System.Drawing.Point(77, 18);
             this.comboBoxBlockName.MaxDropDownItems = 20;
             this.comboBoxBlockName.Name = "comboBoxBlockName";
             this.comboBoxBlockName.Size = new System.Drawing.Size(188, 20);
@@ -392,16 +346,16 @@ namespace chap10
             // 
             // labelPathlabelPath
             // 
-            this.labelPathlabelPath.Location = new System.Drawing.Point(18, 54);
+            this.labelPathlabelPath.Location = new System.Drawing.Point(21, 42);
             this.labelPathlabelPath.Name = "labelPathlabelPath";
-            this.labelPathlabelPath.Size = new System.Drawing.Size(340, 12);
+            this.labelPathlabelPath.Size = new System.Drawing.Size(366, 18);
             this.labelPathlabelPath.TabIndex = 21;
             this.labelPathlabelPath.Text = "路径:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 27);
+            this.label1.Location = new System.Drawing.Point(18, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 22;
@@ -414,7 +368,6 @@ namespace chap10
             this.ClientSize = new System.Drawing.Size(482, 266);
             this.Controls.Add(this.pictureBoxBlock);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -427,7 +380,7 @@ namespace chap10
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModalForm";
-            this.Text = "模态对话框示例";
+            this.Text = "插入外部参照_GEDI";
             this.Load += new System.EventHandler(this.ModalForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBlock)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -447,7 +400,6 @@ namespace chap10
 
         private System.Windows.Forms.PictureBox pictureBoxBlock;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBoxBlockRatio;
@@ -457,7 +409,6 @@ namespace chap10
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBoxRotateAngle;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckBox checkBoxRotate;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxScaleY;
         private System.Windows.Forms.Label label6;
@@ -466,7 +417,6 @@ namespace chap10
         private System.Windows.Forms.TextBox textBoxScaleX;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBoxSameScale;
-        private System.Windows.Forms.CheckBox checkBoxScale;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxInsertPointY;
         private System.Windows.Forms.Label label5;
@@ -474,7 +424,6 @@ namespace chap10
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxInsertPointX;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBoxInsertPoint;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.ComboBox comboBoxBlockName;
         private System.Windows.Forms.Label labelPathlabelPath;

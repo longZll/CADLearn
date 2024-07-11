@@ -12,10 +12,13 @@ using Autodesk.AutoCAD.Runtime;
 namespace DragDropHandler
 {
     /// <summary>
-    /// 拖放处理程序
+    /// 拖放处理程序类
     /// </summary>
     public class DragDropHandler
     {
+        /// <summary>
+        /// 启用拖住事件监听
+        /// </summary>
         [CommandMethod("EnableDragDrop")]
         public void EnableDragDrop()
         {
@@ -33,25 +36,25 @@ namespace DragDropHandler
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
 
-            // 注册一个拖拽事件
+            //注册一个拖拽事件
             //DragWindow dragWindow = new DragWindow(new Point3d(0, 0, 0), new Point3d(100, 100, 0));
             //ed.Drag(dragWindow);
 
-
             if (doc != null && e.GlobalCommandName == "OPEN")
             {
-                // 获取最后一个打开的文档，即新打开的文档
+                //获取最后一个打开的文档，即新打开的文档
                 Document newDoc = Application.DocumentManager.Cast<Document>().Last();
 
-                // 检查新文档是否是DWG文件
+                //检查新文档是否是DWG文件
                 if (System.IO.Path.GetExtension(newDoc.Name).Equals(".dwg", System.StringComparison.OrdinalIgnoreCase))
                 {
                     Database db = newDoc.Database;
-
                     using (Transaction trans = db.TransactionManager.StartTransaction())
                     {
-                        // 以可写模式打开拖入的DWG文件
+                        //以可写模式打开拖入的DWG文件
                         newDoc.Editor.Command(new object[] { "_.OPEN", newDoc.Name });
+
+                        newDoc.Editor.WriteMessage("新文件已拖入!");
 
                         trans.Commit();
                     }

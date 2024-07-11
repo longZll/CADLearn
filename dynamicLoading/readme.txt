@@ -1,7 +1,7 @@
 修改此项目class1中的加载dll路径
 编译此项目,在AutoCAD加载此dll
 
-1.若你的是net framework项目,需要在csproj 中修改 Deterministic中的True为False
+1.若你的是net framework项目,需要在本csproj 中修改 Deterministic中的True为False
 <PropertyGroup>
   <Deterministic>False</Deterministic>
 </PropertyGroup>

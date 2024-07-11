@@ -49,10 +49,10 @@ namespace AttachingExternalReference
                         }
                     }
 
-                    // Save the new objects to the database 保存新对象到数据库
+                    //保存新对象到数据库
                     acTrans.Commit();
 
-                    // 执行缩放操作
+                    //执行缩放操作
                     acDoc.SendStringToExecute("._zoom _e ", true, false, true);
                 }
             }

@@ -34,11 +34,13 @@ namespace XRefs
             string filename = ed.GetFileNameForOpen(opt).StringResult;
 
             Point3d pt=Point3d.Origin;//外部参照的插入点
+
             //提示用户输入外部参照的类型，“A”为附着型，“O”为覆盖型
             PromptKeywordOptions keyOpt=new PromptKeywordOptions("\n请输入外部参照的类型[附着(A)/覆盖(O)]<A>");
             keyOpt.Keywords.Add("A", "A", "A", false, true);
             keyOpt.Keywords.Add("O", "O", "O", false, true);
             keyOpt.Keywords.Default = "A";//缺省为附着型
+
             PromptResult keyResult=ed.GetKeywords(keyOpt);
             bool isOverlay=keyResult.StringResult == "A" ? false : true;  //是否为覆盖型外部参照
             
@@ -140,7 +142,6 @@ namespace XRefs
             //图像文件路径
             //string fileName=Tools.GetCurrentPath3() + "\\child.jpg";
 
-
             //string path = Tools.GetDllDirectory();
             string path = "F:/CADLearn/AUTOCADCode/MyCD/Chap07/outPutPath";
 
@@ -149,7 +150,6 @@ namespace XRefs
 
             doc.Editor.WriteMessage("文件路径为:\n"+fileName);
             
-
             using (Transaction trans=db.TransactionManager.StartTransaction())
             {
                 //访问当前文档的图像目录Id
@@ -183,7 +183,7 @@ namespace XRefs
                 RasterImage.EnableReactors(true);
                 image.AssociateRasterDef(def);
 
-                trans.Commit();//提交事务处理
+                trans.Commit(); //提交事务处理
             }
         }
     }

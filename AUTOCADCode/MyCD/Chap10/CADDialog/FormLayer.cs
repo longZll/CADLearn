@@ -69,11 +69,11 @@ namespace CADDialog
                 {
                     ObjectId layerId=(ObjectId)o;
                     if (layerId == db.Clayer)
-                        return "IsCurrentTrue";//图层为当前层时的图像
+                        return "IsCurrentTrue";     //图层为当前层时的图像
                     else
-                        return "IsCurrentFalse";//图层不是当前层时的图像
+                        return "IsCurrentFalse";    //图层不是当前层时的图像
                 };
-                //设置层名列
+                //设置层名列的内容
                 this.ColumnName.AspectGetter = delegate(object o)
                 {
                     //获取列表视图中的模型对象:层的ObjectId

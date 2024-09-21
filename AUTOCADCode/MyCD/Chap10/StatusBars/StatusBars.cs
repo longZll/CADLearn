@@ -10,6 +10,9 @@ namespace StatusBars
 {
     public class StatusBars
     {
+        /// <summary>
+        /// 创建程序窗格
+        /// </summary>
         [CommandMethod("CreateAppPane")]
         public void AddApplicationPane()
         {
@@ -39,8 +42,9 @@ namespace StatusBars
             {
                 return;
             }
+
             //切换窗格按钮的状态
-            if (paneButton.Style == PaneStyles.PopOut)//如果窗格按钮是弹出的，则切换为凹进
+            if (paneButton.Style == PaneStyles.PopOut)  //如果窗格按钮是弹出的，则切换为凹进
             {
                 paneButton.Style = PaneStyles.Normal;
                 alertMessage = "程序窗格按钮被按下";
@@ -55,6 +59,11 @@ namespace StatusBars
             //显示反映窗格按钮变化的信息
             Application.ShowAlertDialog(alertMessage);
         }
+
+
+        /// <summary>
+        /// 在状态栏添加新的托盘,并显示气泡通知
+        /// </summary>
         [CommandMethod("StatusBarBalloon")]
         public void StatusBarBalloon()
         {
@@ -62,10 +71,10 @@ namespace StatusBars
             Editor ed=doc.Editor;
             //提示用户输入需要改变颜色的对象
             ObjectId id=ed.GetEntity("请选择需要改变颜色的对象").ObjectId;
-            TrayItem trayItem=new TrayItem();//新建一个托盘项目
-            trayItem.ToolTipText = "改变对象的颜色";//托盘项目的提示字符
+            TrayItem trayItem=new TrayItem();           //新建一个托盘项目
+            trayItem.ToolTipText = "改变对象的颜色";       //托盘项目的提示字符
             //托盘项目的图标
-            trayItem.Icon = doc.StatusBar.TrayItems[0].Icon;
+            trayItem.Icon = Application.StatusBar.TrayItems[0].Icon;
             //将托盘项目添加到AutoCAD的状态栏区域
             Application.StatusBar.TrayItems.Add(trayItem);
             //新建一个气泡通知窗口
@@ -76,6 +85,7 @@ namespace StatusBars
             window.IconType = IconType.Information;//气泡窗口的图标类型
             trayItem.ShowBubbleWindow(window);//在托盘上显示气泡窗口
             Application.StatusBar.Update();//更新状态栏
+            
             //注册气泡窗口关闭事件
             window.Closed += (sender, e) =>
             {
@@ -86,7 +96,7 @@ namespace StatusBars
                     using (Transaction trans=doc.TransactionManager.StartTransaction())
                     {
                         Entity ent=(Entity)trans.GetObject(id, OpenMode.ForWrite);
-                        ent.ColorIndex = 1;
+                        ent.ColorIndex = 1;  //设置对象的颜色为红色
                         trans.Commit();
                     }
                 }

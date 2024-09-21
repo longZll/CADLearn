@@ -15,10 +15,10 @@ using DotNetARX;
 namespace Palettes
 {
     public class Palettes
-    {
-        internal static PaletteSet ps=null;
-        static UCTreeView treeControl=null;
-        static UCDockDrag dockControl=null;
+    { 
+        internal static PaletteSet ps=null;     //面板集对象
+        static UCTreeView treeControl=null;     //第一个面板中的控件
+        static UCDockDrag dockControl=null;     //第二个面板中的控件
         [CommandMethod("ShowPalette")]
         public void ShowPalette()
         {

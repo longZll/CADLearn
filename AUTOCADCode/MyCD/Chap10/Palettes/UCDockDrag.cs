@@ -54,7 +54,7 @@ namespace Palettes
         {
             if (Palettes.ps.Dock != DockSides.None)
             {
-                Palettes.ps.KeepFocus = false;
+                Palettes.ps.KeepFocus = false; //将焦点控制权返回给AutoCAD
             }
         }
 

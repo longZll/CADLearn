@@ -43,7 +43,7 @@ namespace CUIExample
         [CommandMethod("AddMenu")]
         public void AddMenu()
         {
-            string currentPath = Tools.GetCurrentPath();//当前运行目录
+            string currentPath = Tools.GetCurrentPath();    //当前运行目录
             //装载局部CUI文件，若不存在，则创建
             CustomizationSection cs = activeDoc.AddCui(cuiFile, menuGroupName);
             //添加表示绘制直线、多段线、矩形和圆的命令宏            
@@ -68,7 +68,7 @@ namespace CUIExample
                 myMenu.AddMenuItem(-1, null, "ID_MyPLine");
                 myMenu.AddMenuItem(-1, null, "ID_MyRectang");
                 myMenu.AddMenuItem(-1, null, "ID_MyCircle");
-                myMenu.AddSeparator(-1);//为菜单添加一分隔条
+                myMenu.AddSeparator(-1);    //为菜单添加一分隔条
                 //添加一个名为“修改”的子菜单
                 PopMenu menuModify = myMenu.AddSubMenu(-1, "修改", "ID_MyModify");
                 //从上到下为“修改”子菜单添加复制、删除、移动及旋转操作的菜单项
@@ -100,7 +100,7 @@ namespace CUIExample
             ToolbarButton buttonRotate = barModify.AddToolbarButton(-1, "旋转", "ID_MyRotate");
             //将“修改工具栏”附着到“我的工具栏”的最后
             barDraw.AttachToolbarToFlyout(-1, barModify);
-            cs.LoadCui();//必须装载CUI文件，才能看到添加的菜单
+            cs.LoadCui();   //必须装载CUI文件，才能看到添加的菜单
         }
         [CommandMethod("AddDoubleClick")]
         public void AddDoubleClick()
@@ -111,7 +111,7 @@ namespace CUIExample
             MenuMacro macro = cs.AddMacro("多段线 - 双击", "^C^C_DoubleClickPline ", "ID_PlineDoubleClick", "调用自定义命令", null);
             //创建双击动作
             DoubleClickAction action = new DoubleClickAction(cs.MenuGroup, "优化多段线", -1);
-            action.ElementID = "EID_mydblclick";//双击动作的标识号
+            action.ElementID = "EID_mydblclick";    //双击动作的标识号
             //设置双击动作的对象为多段线
             action.DxfName = RXClass.GetClass(typeof(Polyline)).DxfName;
             //创建一个双击命令对象，指定双击对象时执行的命令宏
@@ -124,13 +124,16 @@ namespace CUIExample
         {
             Application.ShowAlertDialog("你双击了多段线！");
         }
+        /// <summary>
+        /// 显示程序级别的快捷菜单
+        /// </summary>
         [CommandMethod("AddDefaultContextMenu")]
         public void AddDefaultContextMenu()
         {
             //定义一个ContextMenuExtension对象，用于表示快捷菜单
             ContextMenuExtension contextMenu = new ContextMenuExtension();
-            contextMenu.Title = "我的快捷菜单";//设置快捷菜单的标题
-            MenuItem mi = new MenuItem("复制");//添加名为"复制"的菜单项
+            contextMenu.Title = "我的快捷菜单";       //设置快捷菜单的标题
+            MenuItem mi = new MenuItem("复制");      //添加名为"复制"的菜单项
             //为"复制"菜单项添加单击事件
             mi.Click += new EventHandler(mi_Click);
             contextMenu.MenuItems.Add(mi);//将"复制"菜单项添加到快捷菜单中
@@ -143,13 +146,16 @@ namespace CUIExample
         }
         void mi_Click(object sender, EventArgs e)
         {
-            MenuItem mi = sender as MenuItem;//获取发出命令的快捷菜单项
+            MenuItem mi = sender as MenuItem;   //获取发出命令的快捷菜单项
             //根据快捷菜单项的名字，分别调用对应的命令
             if (mi.Text == "复制")
                 activeDoc.SendStringToExecute("_Copy ", true, false, true);
             else if (mi.Text == "删除")
                 activeDoc.SendStringToExecute("_Erase ", true, false, true);
         }
+        /// <summary>
+        /// 添加实体对象的快捷菜单,显示选择的实体的个数
+        /// </summary>
         [CommandMethod("AddObjectContextMenu")]
         public void AddObjectContextMenu()
         {
@@ -162,7 +168,7 @@ namespace CUIExample
             {
                 activeDoc.SendStringToExecute("_Count ", true, false, false);
             };
-            contextMenu.MenuItems.Add(miCircle);//将"统计个数"菜单项添加到快捷菜单中
+            contextMenu.MenuItems.Add(miCircle);    //将"统计个数"菜单项添加到快捷菜单中
             //获得实体所属的RXClass类型
             RXClass rx = RXClass.GetClass(typeof(Entity));
             //为实体对象添加定义的快捷菜单

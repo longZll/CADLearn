@@ -32,12 +32,12 @@ namespace DotNetARX
         /// <returns>返回创建的CUI文件</returns>
         public static CustomizationSection AddCui(this Document doc, string cuiFile, string menuGroupName)
         {
-            CustomizationSection cs;//声明CUI文件对象
-            if (!File.Exists(cuiFile))//如果要创建的文件不存在
+            CustomizationSection cs;    //声明CUI文件对象
+            if (!File.Exists(cuiFile))  //如果要创建的文件不存在
             {
-                cs = new CustomizationSection();//创建CUI文件对象
-                cs.MenuGroupName = menuGroupName;//指定菜单组名称
-                cs.SaveAs(cuiFile);//保存CUI文件
+                cs = new CustomizationSection();    //创建CUI文件对象
+                cs.MenuGroupName = menuGroupName;   //指定菜单组名称
+                cs.SaveAs(cuiFile);                 //保存CUI文件
             }
             //如果已经存在指定的CUI文件，则打开该文件
             else cs = new CustomizationSection(cuiFile);
@@ -52,8 +52,8 @@ namespace DotNetARX
         {
             if (cs.IsModified) cs.Save();//如果CUI文件被修改，则保存
             //保存CMDECHO及FILEDIA系统变量
-            object oldCmdEcho =  Application.GetSystemVariable("CMDECHO");
-            object oldFileDia =    Application.GetSystemVariable("FILEDIA");
+            object oldCmdEcho = Application.GetSystemVariable("CMDECHO");
+            object oldFileDia = Application.GetSystemVariable("FILEDIA");
             //设置CMDECHO=0，控制不在命令行上回显提示和输入信息
             Application.SetSystemVariable("CMDECHO", 0);
             //设置FILEDIA=0，禁止显示文件对话框，这样可以通过程序输入文件名
@@ -139,8 +139,8 @@ namespace DotNetARX
             newPmi = new PopMenuItem(parentMenu, index);
             ////如果name不为空，则指定菜单项的显示名为name，否则会使用命令宏的名称
             if (name != null) newPmi.Name = name;
-            newPmi.MacroID = macroId;//菜单项的命令宏的ID
-            return newPmi;//返回菜单项对象
+            newPmi.MacroID = macroId;   //菜单项的命令宏的ID
+            return newPmi;  //返回菜单项对象
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace DotNetARX
         {
             //创建一个工具栏按钮对象，指定其命令宏Id、显示名称、所属的工具栏和位置
             ToolbarButton button=new ToolbarButton(macroId, name, parent, index);
-            return button;//返回工具栏按钮对象
+            return button;  //返回工具栏按钮对象
         }
 
         /// <summary>

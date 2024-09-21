@@ -22,11 +22,13 @@ namespace load
 
             //写上你dll的路径
 
-            string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
+            //string path = @"F:\cadDevelopment\Install\bin\CADDevelopment.dll";
             //string path = @"F:\cadDevelopment\Install\bin\DwgFilePro.dll";
-            //string path = @" F:\bigDataResultUp\DocWatch\DocWatchService\dll\XattachGEDI.dll";
+            //string path = @"F:\bigDataResultUp\DocWatch\DocWatchService\dll\XattachGEDI.dll";
             //string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\WBlockTest.dll";
             //string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap07\outPutPath\XRefs.dll";
+
+            string path = @"F:\CADLearn\AUTOCADCode\MyCD\Chap10\SmallestEnclosingCircle\bin\Debug\SmallestEnclosingCircle.dll";
 
             //var ad = new AssemblyDependent("E:\\cad\\bin\\Debug\\demo.dll");  
             //var ad = new AssemblyDependent(@"F:\cadDevelopment\Install\bin\CADDevelopment.dll");  //写上你dll的路径

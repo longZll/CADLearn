@@ -47,12 +47,9 @@
       <HintPath>..\..\..\..\..\cadDevelopment\Exlib\CAD2016\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgdinternal">
-      <HintPath>E:\WinXP\AutoCAD 2008\acmgdinternal.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotNetARX">
-      <HintPath>..\..\..\DotNetARX\2007\bin\Debug\DotNetARX.dll</HintPath>
+    <Reference Include="DotNetARX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\outPutPath\DotNetARX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

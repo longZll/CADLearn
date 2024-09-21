@@ -42,7 +42,7 @@ namespace chap10
             this.comboBoxBlockName.Items.Clear();
 
             //新建一个打开文件对话框，并设置对话框的标题和显示文件类型为dwg或者dxf
-            //TODO:需要修改为打开文件结构树,并选定 文件结构树中的文件
+            //需要修改为打开文件结构树,并选定 文件结构树中的文件
             //AcadWnd.OpenFileDialog dlg = new AcadWnd.OpenFileDialog("选择图形文件", null, "dwg;dxf", null, AcadWnd.OpenFileDialog.OpenFileDialogFlags.AllowMultiple);
 
             //提示用户输入外部参照文件路径

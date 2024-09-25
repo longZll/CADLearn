@@ -12,7 +12,7 @@ bin-release/
 *.air
 *.ipa
 *.apk
-*.pdf
+*.pdb
 *.suo
 
 # Compiled Object files 编译的目标文件

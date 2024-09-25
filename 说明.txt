@@ -1,0 +1,28 @@
+四、CAD二次开发资源
+4.1书籍
+
+强烈推荐：
+《Auto CAD VBA&VB.NET开发》作者：曾洪飞
+《深入浅出AutoCAD.NET二次开发》作者：李冠亿
+虽然这两本书都快十年了，但是经典就是经典，不会因为时间而褪色。
+4.2视频
+
+上面两本书，足以
+4.3代码资源
+
+    上述书中的代码例子
+    官方的https://github.com/ADN-DevTech/AutoCADDotnetTrainingMaterial
+
+4.4官方文档
+
+http://help.autodesk.com/view/OARX/2018/ENU/?guid=GUID-4E1AAFA9-740E-4097-800C-CAED09CDFF12
+这个是2018的，不同的CAD版本会有对应的开发文档，大家可以去对应去搜索
+4.5官方开发中心
+
+https://www.autodesk.com/developer-network/platform-technologies/autocad
+这个里面有很多资料，大家可以看
+————————————————
+
+                此文由黑夜の骑士创作，转载请注明出处，交流qq1056291511
+                        
+原文链接：https://blog.csdn.net/birdfly2015/article/details/107213288
